@@ -4,6 +4,7 @@ import {
   HeadContent,
   Scripts,
   createRootRouteWithContext,
+  useMatches,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import Footer from '../components/Footer'
@@ -23,7 +24,14 @@ import type { TRPCRouter } from '#/integrations/trpc/router'
 import type { QueryClient } from '@tanstack/react-query'
 import type { TRPCOptionsProxy } from '@trpc/tanstack-react-query'
 
+import { Toaster } from '#/components/ui/sonner'
 import { ThemeProvider } from '@/components/theme-provider'
+
+declare module '@tanstack/react-router' {
+  interface StaticDataRouteOption {
+    showNavbar?: boolean
+  }
+}
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -64,6 +72,10 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const showNavbar = useMatches({
+    select: (matches) =>
+      !matches.some((m) => m.staticData.showNavbar === false),
+  })
   return (
     <html lang={getLocale()} suppressHydrationWarning>
       <head>
@@ -72,9 +84,23 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body className="font-sans antialiased wrap-anywhere selection:bg-accent">
         <PostHogProvider>
           <ThemeProvider defaultTheme="system" storageKey="theme">
-            <Header />
-            <TooltipProvider>{children}</TooltipProvider>
-            <Footer />
+            <TooltipProvider>
+              {showNavbar ? (
+                <>
+                  <Header />
+                  {children}
+                  <Footer />
+                </>
+              ) : (
+                <>{children}</>
+              )}
+            </TooltipProvider>
+            <Toaster
+              position="top-center"
+              closeButton
+              richColors
+              theme="system"
+            />
           </ThemeProvider>
           <TanStackDevtools
             config={{
