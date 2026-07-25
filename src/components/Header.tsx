@@ -1,8 +1,8 @@
 import { Link } from '@tanstack/react-router'
+import BetterAuthHeader from '../integrations/better-auth/header-user.tsx'
 import TanChatAIAssistant from './demo-AIAssistant.tsx'
 import ParaglideLocaleSwitcher from './LocaleSwitcher.tsx'
-import BetterAuthHeader from '../integrations/better-auth/header-user.tsx'
-import ThemeToggle from './ThemeToggle'
+import { ModeToggle } from './mode-toggle.tsx'
 
 export default function Header() {
   return (
@@ -161,7 +161,7 @@ export default function Header() {
           <ParaglideLocaleSwitcher />
           <BetterAuthHeader />
 
-          <ThemeToggle />
+          <ModeToggle />
         </div>
       </nav>
     </header>
