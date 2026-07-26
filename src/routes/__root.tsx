@@ -30,6 +30,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 declare module '@tanstack/react-router' {
   interface StaticDataRouteOption {
     showNavbar?: boolean
+    showSidebar?: boolean
   }
 }
 

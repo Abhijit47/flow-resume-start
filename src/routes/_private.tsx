@@ -1,8 +1,15 @@
 import { SidebarInset, SidebarProvider } from '#/components/ui/sidebar'
 import { AppSidebar } from '#/features/private/app-sidebar'
-import { SiteHeader } from '#/features/private/site-header'
+import { CommonSiteHeader } from '#/features/private/common-site-header'
+import EditorSiteHeader from '#/features/private/editor-site-header'
 import { getSession } from '#/lib/auth.functions'
-import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
+import {
+  createFileRoute,
+  Outlet,
+  redirect,
+  useMatches,
+} from '@tanstack/react-router'
+import { useEffect, useState } from 'react'
 
 export const Route = createFileRoute('/_private')({
   staticData: { showNavbar: false },
@@ -25,6 +32,21 @@ export const Route = createFileRoute('/_private')({
 })
 
 function PrivateLayout() {
+  const [sidebarOpen, setSidebarOpen] = useState(true)
+
+  const isShowSidebar = useMatches({
+    select: (matches) =>
+      !matches.some((m) => m.staticData.showSidebar === false),
+  })
+
+  useEffect(() => {
+    if (!isShowSidebar) {
+      setSidebarOpen(false)
+    } else {
+      setSidebarOpen(true)
+    }
+  }, [isShowSidebar, setSidebarOpen])
+
   return (
     <SidebarProvider
       style={
@@ -33,10 +55,14 @@ function PrivateLayout() {
           '--header-height': 'calc(var(--spacing) * 16)',
         } as React.CSSProperties
       }
+      open={sidebarOpen}
+      onOpenChange={setSidebarOpen}
+      className="relative"
     >
-      <AppSidebar variant="inset" />
+      <AppSidebar variant="floating" />
       <SidebarInset>
-        <SiteHeader />
+        {!isShowSidebar ? <EditorSiteHeader /> : <CommonSiteHeader />}
+
         <Outlet />
       </SidebarInset>
     </SidebarProvider>

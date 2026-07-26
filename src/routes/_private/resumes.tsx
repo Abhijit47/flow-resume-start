@@ -1,26 +1,47 @@
-import { ChartAreaInteractive } from '#/features/private/chart-area-interactive'
-import { DataTable } from '#/features/private/data-table'
-import { SectionCards } from '#/features/private/section-cards'
-import { createFileRoute } from '@tanstack/react-router'
-
-import data from '#/data/data.json'
+import { Button } from '#/components/ui/button'
+import { Card, CardContent, CardDescription } from '#/components/ui/card'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { ChevronRightCircle, PlusCircleIcon } from 'lucide-react'
 
 export const Route = createFileRoute('/_private/resumes')({
+  staticData: { showSidebar: true },
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const navigate = useNavigate()
+
   return (
-    <div className="flex flex-1 flex-col">
-      <div className="@container/main flex flex-1 flex-col gap-2">
-        <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-          <SectionCards />
-          <div className="px-4 lg:px-6">
-            <ChartAreaInteractive />
-          </div>
-          <DataTable data={data} />
-        </div>
-      </div>
+    <div className="px-4 lg:px-6 py-4 md:py-6">
+      <Card>
+        <CardContent className={'grid grid-cols-2 gap-4'}>
+          <Card className={'min-h-72 flex items-center justify-center'}>
+            <CardContent>
+              <Button variant={'secondary'} size={'lg'}>
+                <PlusCircleIcon className={'size-6'} />
+                <CardDescription>New Resume</CardDescription>
+              </Button>
+            </CardContent>
+          </Card>
+          <Card className={'min-h-72 flex items-center justify-center'}>
+            <CardContent>
+              <Button
+                variant={'secondary'}
+                size={'lg'}
+                onClick={() => {
+                  navigate({
+                    to: '/resume/content',
+                    viewTransition: true,
+                  })
+                }}
+              >
+                <ChevronRightCircle className={'size-4'} />
+                <CardDescription>View Resume</CardDescription>
+              </Button>
+            </CardContent>
+          </Card>
+        </CardContent>
+      </Card>
     </div>
   )
 }

@@ -37,6 +37,9 @@ import { Route as DemoStoreRouteImport } from './routes/demo/store'
 import { Route as DemoTableRouteImport } from './routes/demo/table'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
 import { Route as DemoTrpcTodoRouteImport } from './routes/demo/trpc-todo'
+import { Route as PrivateResumeAiToolsRouteImport } from './routes/_private/resume/ai-tools'
+import { Route as PrivateResumeContentRouteImport } from './routes/_private/resume/content'
+import { Route as PrivateResumeCustomizationRouteImport } from './routes/_private/resume/customization'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as ApiTrpcSplatRouteImport } from './routes/api.trpc.$'
 import { Route as DemoFormAddressRouteImport } from './routes/demo/form.address'
@@ -185,6 +188,22 @@ const DemoTrpcTodoRoute = DemoTrpcTodoRouteImport.update({
   path: '/demo/trpc-todo',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivateResumeAiToolsRoute = PrivateResumeAiToolsRouteImport.update({
+  id: '/resume/ai-tools',
+  path: '/resume/ai-tools',
+  getParentRoute: () => PrivateRoute,
+} as any)
+const PrivateResumeContentRoute = PrivateResumeContentRouteImport.update({
+  id: '/resume/content',
+  path: '/resume/content',
+  getParentRoute: () => PrivateRoute,
+} as any)
+const PrivateResumeCustomizationRoute =
+  PrivateResumeCustomizationRouteImport.update({
+    id: '/resume/customization',
+    path: '/resume/customization',
+    getParentRoute: () => PrivateRoute,
+  } as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
@@ -266,6 +285,9 @@ export interface FileRoutesByFullPath {
   '/demo/table': typeof DemoTableRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/trpc-todo': typeof DemoTrpcTodoRoute
+  '/resume/ai-tools': typeof PrivateResumeAiToolsRoute
+  '/resume/content': typeof PrivateResumeContentRoute
+  '/resume/customization': typeof PrivateResumeCustomizationRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -303,6 +325,9 @@ export interface FileRoutesByTo {
   '/demo/table': typeof DemoTableRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/trpc-todo': typeof DemoTrpcTodoRoute
+  '/resume/ai-tools': typeof PrivateResumeAiToolsRoute
+  '/resume/content': typeof PrivateResumeContentRoute
+  '/resume/customization': typeof PrivateResumeCustomizationRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -345,6 +370,9 @@ export interface FileRoutesById {
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/trpc-todo': typeof DemoTrpcTodoRoute
   '/_public/': typeof PublicIndexRoute
+  '/_private/resume/ai-tools': typeof PrivateResumeAiToolsRoute
+  '/_private/resume/content': typeof PrivateResumeContentRoute
+  '/_private/resume/customization': typeof PrivateResumeCustomizationRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -384,6 +412,9 @@ export interface FileRouteTypes {
     | '/demo/table'
     | '/demo/tanstack-query'
     | '/demo/trpc-todo'
+    | '/resume/ai-tools'
+    | '/resume/content'
+    | '/resume/customization'
     | '/api/auth/$'
     | '/api/trpc/$'
     | '/demo/form/address'
@@ -421,6 +452,9 @@ export interface FileRouteTypes {
     | '/demo/table'
     | '/demo/tanstack-query'
     | '/demo/trpc-todo'
+    | '/resume/ai-tools'
+    | '/resume/content'
+    | '/resume/customization'
     | '/api/auth/$'
     | '/api/trpc/$'
     | '/demo/form/address'
@@ -462,6 +496,9 @@ export interface FileRouteTypes {
     | '/demo/tanstack-query'
     | '/demo/trpc-todo'
     | '/_public/'
+    | '/_private/resume/ai-tools'
+    | '/_private/resume/content'
+    | '/_private/resume/customization'
     | '/api/auth/$'
     | '/api/trpc/$'
     | '/demo/form/address'
@@ -702,6 +739,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoTrpcTodoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_private/resume/ai-tools': {
+      id: '/_private/resume/ai-tools'
+      path: '/resume/ai-tools'
+      fullPath: '/resume/ai-tools'
+      preLoaderRoute: typeof PrivateResumeAiToolsRouteImport
+      parentRoute: typeof PrivateRoute
+    }
+    '/_private/resume/content': {
+      id: '/_private/resume/content'
+      path: '/resume/content'
+      fullPath: '/resume/content'
+      preLoaderRoute: typeof PrivateResumeContentRouteImport
+      parentRoute: typeof PrivateRoute
+    }
+    '/_private/resume/customization': {
+      id: '/_private/resume/customization'
+      path: '/resume/customization'
+      fullPath: '/resume/customization'
+      preLoaderRoute: typeof PrivateResumeCustomizationRouteImport
+      parentRoute: typeof PrivateRoute
+    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
@@ -811,6 +869,9 @@ interface PrivateRouteChildren {
   PrivateResumesRoute: typeof PrivateResumesRoute
   PrivateSettingsRoute: typeof PrivateSettingsRoute
   PrivateStudentBenefitsRoute: typeof PrivateStudentBenefitsRoute
+  PrivateResumeAiToolsRoute: typeof PrivateResumeAiToolsRoute
+  PrivateResumeContentRoute: typeof PrivateResumeContentRoute
+  PrivateResumeCustomizationRoute: typeof PrivateResumeCustomizationRoute
 }
 
 const PrivateRouteChildren: PrivateRouteChildren = {
@@ -820,6 +881,9 @@ const PrivateRouteChildren: PrivateRouteChildren = {
   PrivateResumesRoute: PrivateResumesRoute,
   PrivateSettingsRoute: PrivateSettingsRoute,
   PrivateStudentBenefitsRoute: PrivateStudentBenefitsRoute,
+  PrivateResumeAiToolsRoute: PrivateResumeAiToolsRoute,
+  PrivateResumeContentRoute: PrivateResumeContentRoute,
+  PrivateResumeCustomizationRoute: PrivateResumeCustomizationRoute,
 }
 
 const PrivateRouteWithChildren =

@@ -1,9 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/_private/settings')({
+  staticData: { showSidebar: true },
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return <div>Hello "/_private/settings"!</div>
+  return (
+    <div className="px-4 lg:px-6 py-4 md:py-6">Hello "/_private/settings"!</div>
+  )
 }
