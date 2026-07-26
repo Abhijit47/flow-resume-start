@@ -19,7 +19,7 @@
   },
   "iconLibrary": [
     "lucide-react",
-    "@tabler-icons/react"
+    "@tabler/icons-react"
   ],
   "rtl": false,
   "menuColor": "inverted",

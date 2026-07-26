@@ -9,11 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/_admin'
 import { Route as AuthRouteImport } from './routes/_auth'
-import { Route as AboutRouteImport } from './routes/about'
+import { Route as PrivateRouteImport } from './routes/_private'
+import { Route as PublicRouteImport } from './routes/_public'
+import { Route as AdminDashboardsRouteImport } from './routes/_admin/dashboards'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AuthRegisterRouteImport } from './routes/_auth/register'
+import { Route as PrivateCoverLettersRouteImport } from './routes/_private/cover-letters'
+import { Route as PrivateJobTrackerRouteImport } from './routes/_private/job-tracker'
+import { Route as PrivatePlansRouteImport } from './routes/_private/plans'
+import { Route as PrivateResumesRouteImport } from './routes/_private/resumes'
+import { Route as PrivateSettingsRouteImport } from './routes/_private/settings'
+import { Route as PrivateStudentBenefitsRouteImport } from './routes/_private/student-benefits'
+import { Route as PublicIndexRouteImport } from './routes/_public/index'
+import { Route as PublicAboutRouteImport } from './routes/_public/about'
+import { Route as PublicPricingRouteImport } from './routes/_public/pricing'
+import { Route as PublicResumeTemplatesRouteImport } from './routes/_public/resume-templates'
 import { Route as DemoAiChatRouteImport } from './routes/demo/ai-chat'
 import { Route as DemoAiImageRouteImport } from './routes/demo/ai-image'
 import { Route as DemoAiStructuredRouteImport } from './routes/demo/ai-structured'
@@ -37,19 +49,26 @@ import { Route as DemoApiAiStructuredRouteImport } from './routes/demo/api.ai.st
 import { Route as DemoApiAiTranscriptionRouteImport } from './routes/demo/api.ai.transcription'
 import { Route as DemoApiAiTtsRouteImport } from './routes/demo/api.ai.tts'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AdminRoute = AdminRouteImport.update({
+  id: '/_admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const PrivateRoute = PrivateRouteImport.update({
+  id: '/_private',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PublicRoute = PublicRouteImport.update({
+  id: '/_public',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardsRoute = AdminDashboardsRouteImport.update({
+  id: '/dashboards',
+  path: '/dashboards',
+  getParentRoute: () => AdminRoute,
 } as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/login',
@@ -60,6 +79,56 @@ const AuthRegisterRoute = AuthRegisterRouteImport.update({
   id: '/register',
   path: '/register',
   getParentRoute: () => AuthRoute,
+} as any)
+const PrivateCoverLettersRoute = PrivateCoverLettersRouteImport.update({
+  id: '/cover-letters',
+  path: '/cover-letters',
+  getParentRoute: () => PrivateRoute,
+} as any)
+const PrivateJobTrackerRoute = PrivateJobTrackerRouteImport.update({
+  id: '/job-tracker',
+  path: '/job-tracker',
+  getParentRoute: () => PrivateRoute,
+} as any)
+const PrivatePlansRoute = PrivatePlansRouteImport.update({
+  id: '/plans',
+  path: '/plans',
+  getParentRoute: () => PrivateRoute,
+} as any)
+const PrivateResumesRoute = PrivateResumesRouteImport.update({
+  id: '/resumes',
+  path: '/resumes',
+  getParentRoute: () => PrivateRoute,
+} as any)
+const PrivateSettingsRoute = PrivateSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => PrivateRoute,
+} as any)
+const PrivateStudentBenefitsRoute = PrivateStudentBenefitsRouteImport.update({
+  id: '/student-benefits',
+  path: '/student-benefits',
+  getParentRoute: () => PrivateRoute,
+} as any)
+const PublicIndexRoute = PublicIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicAboutRoute = PublicAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPricingRoute = PublicPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicResumeTemplatesRoute = PublicResumeTemplatesRouteImport.update({
+  id: '/resume-templates',
+  path: '/resume-templates',
+  getParentRoute: () => PublicRoute,
 } as any)
 const DemoAiChatRoute = DemoAiChatRouteImport.update({
   id: '/demo/ai-chat',
@@ -173,10 +242,19 @@ const DemoApiAiTtsRoute = DemoApiAiTtsRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/': typeof PublicIndexRoute
+  '/dashboards': typeof AdminDashboardsRoute
   '/login': typeof AuthLoginRoute
   '/register': typeof AuthRegisterRoute
+  '/cover-letters': typeof PrivateCoverLettersRoute
+  '/job-tracker': typeof PrivateJobTrackerRoute
+  '/plans': typeof PrivatePlansRoute
+  '/resumes': typeof PrivateResumesRoute
+  '/settings': typeof PrivateSettingsRoute
+  '/student-benefits': typeof PrivateStudentBenefitsRoute
+  '/about': typeof PublicAboutRoute
+  '/pricing': typeof PublicPricingRoute
+  '/resume-templates': typeof PublicResumeTemplatesRoute
   '/demo/ai-chat': typeof DemoAiChatRoute
   '/demo/ai-image': typeof DemoAiImageRoute
   '/demo/ai-structured': typeof DemoAiStructuredRoute
@@ -201,10 +279,19 @@ export interface FileRoutesByFullPath {
   '/demo/api/ai/tts': typeof DemoApiAiTtsRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/': typeof PublicIndexRoute
+  '/dashboards': typeof AdminDashboardsRoute
   '/login': typeof AuthLoginRoute
   '/register': typeof AuthRegisterRoute
+  '/cover-letters': typeof PrivateCoverLettersRoute
+  '/job-tracker': typeof PrivateJobTrackerRoute
+  '/plans': typeof PrivatePlansRoute
+  '/resumes': typeof PrivateResumesRoute
+  '/settings': typeof PrivateSettingsRoute
+  '/student-benefits': typeof PrivateStudentBenefitsRoute
+  '/about': typeof PublicAboutRoute
+  '/pricing': typeof PublicPricingRoute
+  '/resume-templates': typeof PublicResumeTemplatesRoute
   '/demo/ai-chat': typeof DemoAiChatRoute
   '/demo/ai-image': typeof DemoAiImageRoute
   '/demo/ai-structured': typeof DemoAiStructuredRoute
@@ -230,11 +317,22 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_admin': typeof AdminRouteWithChildren
   '/_auth': typeof AuthRouteWithChildren
-  '/about': typeof AboutRoute
+  '/_private': typeof PrivateRouteWithChildren
+  '/_public': typeof PublicRouteWithChildren
+  '/_admin/dashboards': typeof AdminDashboardsRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_auth/register': typeof AuthRegisterRoute
+  '/_private/cover-letters': typeof PrivateCoverLettersRoute
+  '/_private/job-tracker': typeof PrivateJobTrackerRoute
+  '/_private/plans': typeof PrivatePlansRoute
+  '/_private/resumes': typeof PrivateResumesRoute
+  '/_private/settings': typeof PrivateSettingsRoute
+  '/_private/student-benefits': typeof PrivateStudentBenefitsRoute
+  '/_public/about': typeof PublicAboutRoute
+  '/_public/pricing': typeof PublicPricingRoute
+  '/_public/resume-templates': typeof PublicResumeTemplatesRoute
   '/demo/ai-chat': typeof DemoAiChatRoute
   '/demo/ai-image': typeof DemoAiImageRoute
   '/demo/ai-structured': typeof DemoAiStructuredRoute
@@ -246,6 +344,7 @@ export interface FileRoutesById {
   '/demo/table': typeof DemoTableRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/trpc-todo': typeof DemoTrpcTodoRoute
+  '/_public/': typeof PublicIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -262,9 +361,18 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
+    | '/dashboards'
     | '/login'
     | '/register'
+    | '/cover-letters'
+    | '/job-tracker'
+    | '/plans'
+    | '/resumes'
+    | '/settings'
+    | '/student-benefits'
+    | '/about'
+    | '/pricing'
+    | '/resume-templates'
     | '/demo/ai-chat'
     | '/demo/ai-image'
     | '/demo/ai-structured'
@@ -290,9 +398,18 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
+    | '/dashboards'
     | '/login'
     | '/register'
+    | '/cover-letters'
+    | '/job-tracker'
+    | '/plans'
+    | '/resumes'
+    | '/settings'
+    | '/student-benefits'
+    | '/about'
+    | '/pricing'
+    | '/resume-templates'
     | '/demo/ai-chat'
     | '/demo/ai-image'
     | '/demo/ai-structured'
@@ -317,11 +434,22 @@ export interface FileRouteTypes {
     | '/demo/api/ai/tts'
   id:
     | '__root__'
-    | '/'
+    | '/_admin'
     | '/_auth'
-    | '/about'
+    | '/_private'
+    | '/_public'
+    | '/_admin/dashboards'
     | '/_auth/login'
     | '/_auth/register'
+    | '/_private/cover-letters'
+    | '/_private/job-tracker'
+    | '/_private/plans'
+    | '/_private/resumes'
+    | '/_private/settings'
+    | '/_private/student-benefits'
+    | '/_public/about'
+    | '/_public/pricing'
+    | '/_public/resume-templates'
     | '/demo/ai-chat'
     | '/demo/ai-image'
     | '/demo/ai-structured'
@@ -333,6 +461,7 @@ export interface FileRouteTypes {
     | '/demo/table'
     | '/demo/tanstack-query'
     | '/demo/trpc-todo'
+    | '/_public/'
     | '/api/auth/$'
     | '/api/trpc/$'
     | '/demo/form/address'
@@ -347,9 +476,10 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AuthRoute: typeof AuthRouteWithChildren
-  AboutRoute: typeof AboutRoute
+  PrivateRoute: typeof PrivateRouteWithChildren
+  PublicRoute: typeof PublicRouteWithChildren
   DemoAiChatRoute: typeof DemoAiChatRoute
   DemoAiImageRoute: typeof DemoAiImageRoute
   DemoAiStructuredRoute: typeof DemoAiStructuredRoute
@@ -376,11 +506,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
+    '/_admin': {
+      id: '/_admin'
+      path: ''
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_auth': {
@@ -390,12 +520,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/_private': {
+      id: '/_private'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PrivateRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_admin/dashboards': {
+      id: '/_admin/dashboards'
+      path: '/dashboards'
+      fullPath: '/dashboards'
+      preLoaderRoute: typeof AdminDashboardsRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/_auth/login': {
       id: '/_auth/login'
@@ -410,6 +554,76 @@ declare module '@tanstack/react-router' {
       fullPath: '/register'
       preLoaderRoute: typeof AuthRegisterRouteImport
       parentRoute: typeof AuthRoute
+    }
+    '/_private/cover-letters': {
+      id: '/_private/cover-letters'
+      path: '/cover-letters'
+      fullPath: '/cover-letters'
+      preLoaderRoute: typeof PrivateCoverLettersRouteImport
+      parentRoute: typeof PrivateRoute
+    }
+    '/_private/job-tracker': {
+      id: '/_private/job-tracker'
+      path: '/job-tracker'
+      fullPath: '/job-tracker'
+      preLoaderRoute: typeof PrivateJobTrackerRouteImport
+      parentRoute: typeof PrivateRoute
+    }
+    '/_private/plans': {
+      id: '/_private/plans'
+      path: '/plans'
+      fullPath: '/plans'
+      preLoaderRoute: typeof PrivatePlansRouteImport
+      parentRoute: typeof PrivateRoute
+    }
+    '/_private/resumes': {
+      id: '/_private/resumes'
+      path: '/resumes'
+      fullPath: '/resumes'
+      preLoaderRoute: typeof PrivateResumesRouteImport
+      parentRoute: typeof PrivateRoute
+    }
+    '/_private/settings': {
+      id: '/_private/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof PrivateSettingsRouteImport
+      parentRoute: typeof PrivateRoute
+    }
+    '/_private/student-benefits': {
+      id: '/_private/student-benefits'
+      path: '/student-benefits'
+      fullPath: '/student-benefits'
+      preLoaderRoute: typeof PrivateStudentBenefitsRouteImport
+      parentRoute: typeof PrivateRoute
+    }
+    '/_public/': {
+      id: '/_public/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/about': {
+      id: '/_public/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof PublicAboutRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/pricing': {
+      id: '/_public/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PublicPricingRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/resume-templates': {
+      id: '/_public/resume-templates'
+      path: '/resume-templates'
+      fullPath: '/resume-templates'
+      preLoaderRoute: typeof PublicResumeTemplatesRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/demo/ai-chat': {
       id: '/demo/ai-chat'
@@ -568,6 +782,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminDashboardsRoute: typeof AdminDashboardsRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminDashboardsRoute: AdminDashboardsRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface AuthRouteChildren {
   AuthLoginRoute: typeof AuthLoginRoute
   AuthRegisterRoute: typeof AuthRegisterRoute
@@ -580,10 +804,49 @@ const AuthRouteChildren: AuthRouteChildren = {
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
+interface PrivateRouteChildren {
+  PrivateCoverLettersRoute: typeof PrivateCoverLettersRoute
+  PrivateJobTrackerRoute: typeof PrivateJobTrackerRoute
+  PrivatePlansRoute: typeof PrivatePlansRoute
+  PrivateResumesRoute: typeof PrivateResumesRoute
+  PrivateSettingsRoute: typeof PrivateSettingsRoute
+  PrivateStudentBenefitsRoute: typeof PrivateStudentBenefitsRoute
+}
+
+const PrivateRouteChildren: PrivateRouteChildren = {
+  PrivateCoverLettersRoute: PrivateCoverLettersRoute,
+  PrivateJobTrackerRoute: PrivateJobTrackerRoute,
+  PrivatePlansRoute: PrivatePlansRoute,
+  PrivateResumesRoute: PrivateResumesRoute,
+  PrivateSettingsRoute: PrivateSettingsRoute,
+  PrivateStudentBenefitsRoute: PrivateStudentBenefitsRoute,
+}
+
+const PrivateRouteWithChildren =
+  PrivateRoute._addFileChildren(PrivateRouteChildren)
+
+interface PublicRouteChildren {
+  PublicAboutRoute: typeof PublicAboutRoute
+  PublicPricingRoute: typeof PublicPricingRoute
+  PublicResumeTemplatesRoute: typeof PublicResumeTemplatesRoute
+  PublicIndexRoute: typeof PublicIndexRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
+  PublicAboutRoute: PublicAboutRoute,
+  PublicPricingRoute: PublicPricingRoute,
+  PublicResumeTemplatesRoute: PublicResumeTemplatesRoute,
+  PublicIndexRoute: PublicIndexRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   AuthRoute: AuthRouteWithChildren,
-  AboutRoute: AboutRoute,
+  PrivateRoute: PrivateRouteWithChildren,
+  PublicRoute: PublicRouteWithChildren,
   DemoAiChatRoute: DemoAiChatRoute,
   DemoAiImageRoute: DemoAiImageRoute,
   DemoAiStructuredRoute: DemoAiStructuredRoute,

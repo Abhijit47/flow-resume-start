@@ -3,6 +3,7 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { GalleryVerticalEnd } from 'lucide-react'
 
 export const Route = createFileRoute('/_auth/login')({
+  // validateSearch: z.object({ offset: z.number().catch(0) }),
   component: RouteComponent,
 })
 
