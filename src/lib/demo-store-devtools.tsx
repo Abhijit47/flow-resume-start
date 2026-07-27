@@ -1,7 +1,7 @@
 import { EventClient } from '@tanstack/devtools-event-client'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-import { store, fullName } from './demo-store'
+import { fullName, store } from './demo-store'
 
 type EventMap = {
   'store-devtools:state': {
@@ -43,7 +43,7 @@ function DevtoolPanel() {
   return (
     <div className="p-4 grid gap-4 grid-cols-[1fr_10fr]">
       <div className="demo-muted whitespace-nowrap text-sm font-bold">
-        First Name
+        First Namef
       </div>
       <div className="text-sm">{state?.firstName}</div>
       <div className="demo-muted whitespace-nowrap text-sm font-bold">
