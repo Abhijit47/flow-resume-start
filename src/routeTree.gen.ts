@@ -19,6 +19,7 @@ import { Route as AuthRegisterRouteImport } from './routes/_auth/register'
 import { Route as PrivateCoverLettersRouteImport } from './routes/_private/cover-letters'
 import { Route as PrivateJobTrackerRouteImport } from './routes/_private/job-tracker'
 import { Route as PrivatePlansRouteImport } from './routes/_private/plans'
+import { Route as PrivatePrintRouteImport } from './routes/_private/print'
 import { Route as PrivateResumesRouteImport } from './routes/_private/resumes'
 import { Route as PrivateSettingsRouteImport } from './routes/_private/settings'
 import { Route as PrivateStudentBenefitsRouteImport } from './routes/_private/student-benefits'
@@ -96,6 +97,11 @@ const PrivateJobTrackerRoute = PrivateJobTrackerRouteImport.update({
 const PrivatePlansRoute = PrivatePlansRouteImport.update({
   id: '/plans',
   path: '/plans',
+  getParentRoute: () => PrivateRoute,
+} as any)
+const PrivatePrintRoute = PrivatePrintRouteImport.update({
+  id: '/print',
+  path: '/print',
   getParentRoute: () => PrivateRoute,
 } as any)
 const PrivateResumesRoute = PrivateResumesRouteImport.update({
@@ -268,6 +274,7 @@ export interface FileRoutesByFullPath {
   '/cover-letters': typeof PrivateCoverLettersRoute
   '/job-tracker': typeof PrivateJobTrackerRoute
   '/plans': typeof PrivatePlansRoute
+  '/print': typeof PrivatePrintRoute
   '/resumes': typeof PrivateResumesRoute
   '/settings': typeof PrivateSettingsRoute
   '/student-benefits': typeof PrivateStudentBenefitsRoute
@@ -308,6 +315,7 @@ export interface FileRoutesByTo {
   '/cover-letters': typeof PrivateCoverLettersRoute
   '/job-tracker': typeof PrivateJobTrackerRoute
   '/plans': typeof PrivatePlansRoute
+  '/print': typeof PrivatePrintRoute
   '/resumes': typeof PrivateResumesRoute
   '/settings': typeof PrivateSettingsRoute
   '/student-benefits': typeof PrivateStudentBenefitsRoute
@@ -352,6 +360,7 @@ export interface FileRoutesById {
   '/_private/cover-letters': typeof PrivateCoverLettersRoute
   '/_private/job-tracker': typeof PrivateJobTrackerRoute
   '/_private/plans': typeof PrivatePlansRoute
+  '/_private/print': typeof PrivatePrintRoute
   '/_private/resumes': typeof PrivateResumesRoute
   '/_private/settings': typeof PrivateSettingsRoute
   '/_private/student-benefits': typeof PrivateStudentBenefitsRoute
@@ -395,6 +404,7 @@ export interface FileRouteTypes {
     | '/cover-letters'
     | '/job-tracker'
     | '/plans'
+    | '/print'
     | '/resumes'
     | '/settings'
     | '/student-benefits'
@@ -435,6 +445,7 @@ export interface FileRouteTypes {
     | '/cover-letters'
     | '/job-tracker'
     | '/plans'
+    | '/print'
     | '/resumes'
     | '/settings'
     | '/student-benefits'
@@ -478,6 +489,7 @@ export interface FileRouteTypes {
     | '/_private/cover-letters'
     | '/_private/job-tracker'
     | '/_private/plans'
+    | '/_private/print'
     | '/_private/resumes'
     | '/_private/settings'
     | '/_private/student-benefits'
@@ -611,6 +623,13 @@ declare module '@tanstack/react-router' {
       path: '/plans'
       fullPath: '/plans'
       preLoaderRoute: typeof PrivatePlansRouteImport
+      parentRoute: typeof PrivateRoute
+    }
+    '/_private/print': {
+      id: '/_private/print'
+      path: '/print'
+      fullPath: '/print'
+      preLoaderRoute: typeof PrivatePrintRouteImport
       parentRoute: typeof PrivateRoute
     }
     '/_private/resumes': {
@@ -866,6 +885,7 @@ interface PrivateRouteChildren {
   PrivateCoverLettersRoute: typeof PrivateCoverLettersRoute
   PrivateJobTrackerRoute: typeof PrivateJobTrackerRoute
   PrivatePlansRoute: typeof PrivatePlansRoute
+  PrivatePrintRoute: typeof PrivatePrintRoute
   PrivateResumesRoute: typeof PrivateResumesRoute
   PrivateSettingsRoute: typeof PrivateSettingsRoute
   PrivateStudentBenefitsRoute: typeof PrivateStudentBenefitsRoute
@@ -878,6 +898,7 @@ const PrivateRouteChildren: PrivateRouteChildren = {
   PrivateCoverLettersRoute: PrivateCoverLettersRoute,
   PrivateJobTrackerRoute: PrivateJobTrackerRoute,
   PrivatePlansRoute: PrivatePlansRoute,
+  PrivatePrintRoute: PrivatePrintRoute,
   PrivateResumesRoute: PrivateResumesRoute,
   PrivateSettingsRoute: PrivateSettingsRoute,
   PrivateStudentBenefitsRoute: PrivateStudentBenefitsRoute,

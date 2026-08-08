@@ -6,6 +6,7 @@ export const basePersonalDetailsSchema = z.object({
   displayEmail: z.email().optional(),
   phone: z.string().optional(),
   address: z.string().optional(),
+  avatar: z.string().optional(), // URL or base64 string of the avatar image
 })
 
 export const socialProfileSchema = z.object({

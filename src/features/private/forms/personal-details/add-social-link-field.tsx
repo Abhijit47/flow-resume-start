@@ -29,7 +29,7 @@ export default function AddSocialLinkField() {
           <FieldLabel htmlFor="social-profile">Search Providers</FieldLabel>
           <Input
             id="social-profile"
-            placeholder="https://www.linkedin.com/in/username"
+            placeholder="Search social profile"
             value={searchSocialProfile}
             onChange={(e) => onSearchSocialProfileChange(e.target.value)}
             disabled={fields.length >= 5}

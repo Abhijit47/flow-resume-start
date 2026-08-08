@@ -34,7 +34,7 @@ export default function SocialLinks() {
     <FieldGroup className="gap-2">
       {fields.map((field, index) => (
         <Controller
-          name={`social.${index}.link` as const}
+          name={`social.${index}.display` as const}
           key={field.id}
           control={form.control}
           render={({ field: controllerField, fieldState }) => (
@@ -52,13 +52,13 @@ export default function SocialLinks() {
                     id={`form-rhf-array-social-${index}`}
                     aria-invalid={fieldState.invalid}
                     placeholder={field.display || 'https://www.example.com'}
-                    type="email"
-                    autoComplete="email"
-                    value={controllerField.value || ''}
-                    onChange={(e) => {
-                      controllerField.onChange(e)
-                      form.setValue(`social.${index}.display`, field.display)
-                    }}
+                    type="text"
+                    autoComplete="off"
+                    // value={controllerField.value || ''}
+                    // onChange={(e) => {
+                    //   controllerField.onChange(e)
+                    //   form.setValue(`social.${index}.display`, field.display)
+                    // }}
                   />
 
                   <AddSocialLinkPopover idx={index} />
@@ -118,71 +118,44 @@ function AddSocialLinkPopover({ idx }: { idx: number }) {
         </InputGroupAddon>
       </PopoverTrigger>
       <PopoverContent className="w-80" align="end">
-        <Field>
-          <FieldLabel htmlFor={`form-rhf-array-social-${idx}-url`}>
-            Link URL {idx + 1}
-          </FieldLabel>
-          <InputGroup>
-            <InputGroupInput
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              id={`form-rhf-array-social-${idx}-url`}
-              placeholder={`Add url ${idx + 1}`}
-            />
-            <InputGroupAddon align="inline-end">
-              <InputGroupButton
-                type="button"
-                variant="ghost"
-                size="icon-xs"
-                onClick={() => {
-                  form.setValue(`social.${idx}.link`, url)
-                  setUrl('')
-                  setOpenUrlPopover(false)
-                }}
-                aria-label={`Add url ${idx + 1}`}
-              >
-                <CheckCircle />
-              </InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-        </Field>
+        <Controller
+          name={`social.${idx}.link` as const}
+          control={form.control}
+          render={({ field: controllerField }) => (
+            <Field>
+              <FieldLabel htmlFor={`form-rhf-array-social-${idx}-url`}>
+                Link URL {idx + 1}
+              </FieldLabel>
+              <InputGroup>
+                <InputGroupInput
+                  {...controllerField}
+                  type="url"
+                  autoComplete="off"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  id={`form-rhf-array-social-${idx}-url`}
+                  placeholder={`Add url ${idx + 1}`}
+                />
+                <InputGroupAddon align="inline-end">
+                  <InputGroupButton
+                    type="button"
+                    variant="ghost"
+                    size="icon-xs"
+                    onClick={() => {
+                      form.setValue(`social.${idx}.link`, url)
+                      setUrl('')
+                      setOpenUrlPopover(false)
+                    }}
+                    aria-label={`Add url ${idx + 1}`}
+                  >
+                    <CheckCircle />
+                  </InputGroupButton>
+                </InputGroupAddon>
+              </InputGroup>
+            </Field>
+          )}
+        />
       </PopoverContent>
     </Popover>
   )
 }
-
-// function Sample() {
-//   return (
-//     <InputGroup className="[--radius:9999px]">
-//       <Popover>
-//         <PopoverTrigger>
-//           <InputGroupAddon>
-//             <InputGroupButton variant="secondary" size="icon-xs">
-//               <IconInfoCircle />
-//             </InputGroupButton>
-//           </InputGroupAddon>
-//         </PopoverTrigger>
-//         <PopoverContent
-//           align="start"
-//           className="flex flex-col gap-1 rounded-xl text-sm"
-//         >
-//           <p className="font-medium">Your connection is not secure.</p>
-//           <p>You should not enter any sensitive information on this site.</p>
-//         </PopoverContent>
-//       </Popover>
-//       <InputGroupAddon className="pl-1.5 text-muted-foreground">
-//         https://
-//       </InputGroupAddon>
-//       <InputGroupInput id="input-secure-19" />
-//       <InputGroupAddon align="inline-end">
-//         <InputGroupButton onClick={() => {}} size="icon-xs">
-//           <IconStar
-//             // data-favorite={isFavorite}
-//             data-favorite={false}
-//             className="data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600"
-//           />
-//         </InputGroupButton>
-//       </InputGroupAddon>
-//     </InputGroup>
-//   )
-// }

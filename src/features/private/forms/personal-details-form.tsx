@@ -11,7 +11,8 @@ import { IconBulb } from '@tabler/icons-react'
 import { Field, FieldGroup, FieldSeparator } from '#/components/ui/field'
 
 import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
-import { updateIsEnabledFirstForm } from '#/store/resume-store'
+// import { updateIsEnabledFirstForm } from '#/store/resume-store'
+import { ScrollArea } from '#/components/ui/scroll-area'
 import { Check } from 'lucide-react'
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form'
 import { useFormContext } from 'react-hook-form'
@@ -28,49 +29,48 @@ export default function PersonalDetailsForm() {
 
   const onSubmit: SubmitHandler<PersonalDetailsFormData> = (data) => {
     console.log('Form Data:', data)
+    // updateIsEnabledFirstForm(false)
   }
 
   return (
-    <Card className={'col-span-full lg:col-span-5'}>
-      <CardHeader>
-        <CardTitle>Edit Personal Details</CardTitle>
-        <CardAction>
-          <Button variant={'ghost'} size={'sm'}>
-            <IconBulb className={'size-4'} />
-            Get Tips
-          </Button>
-        </CardAction>
-      </CardHeader>
+    <ScrollArea
+      className={'col-span-full lg:col-span-5 h-dvh overflow-y-scroll'}
+    >
+      <Card className={'w-full'}>
+        <CardHeader>
+          <CardTitle>Edit Personal Details</CardTitle>
+          <CardAction>
+            <Button variant={'ghost'} size={'sm'}>
+              <IconBulb className={'size-4'} />
+              Get Tips
+            </Button>
+          </CardAction>
+        </CardHeader>
 
-      <CardContent>
-        <div className="w-full">
-          <form onSubmit={form.handleSubmit(onSubmit, onError)}>
-            <FieldGroup className={'gap-2'}>
-              <PersonalDetailsFields />
+        <CardContent>
+          <div className="w-full">
+            <form onSubmit={form.handleSubmit(onSubmit, onError)}>
+              <FieldGroup className={'gap-2'}>
+                <PersonalDetailsFields />
 
-              <FieldSeparator />
+                <FieldSeparator />
 
-              <AddAdditionalField />
+                <AddAdditionalField />
 
-              <FieldSeparator />
+                <FieldSeparator />
 
-              <AddSocialLinkField />
+                <AddSocialLinkField />
 
-              <Field orientation="horizontal">
-                <Button
-                  type="button"
-                  size={'lg'}
-                  className={'w-full'}
-                  onClick={() => updateIsEnabledFirstForm(false)}
-                >
-                  <Check className={'size-4'} />
-                  Done
-                </Button>
-              </Field>
-            </FieldGroup>
-          </form>
-        </div>
-      </CardContent>
-    </Card>
+                <Field orientation="horizontal"></Field>
+              </FieldGroup>
+              <Button type="submit" size={'lg'} className={'w-full'}>
+                <Check className={'size-4'} />
+                Done
+              </Button>
+            </form>
+          </div>
+        </CardContent>
+      </Card>
+    </ScrollArea>
   )
 }

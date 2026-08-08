@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '#/components/ui/card'
+import { DBConfig } from '#/constants/indexDB-config'
 import AddContentDialog from '#/features/private/add-content-dialog'
 import { updateIsEnabledFirstForm } from '#/store/resume-store'
 import {
@@ -16,8 +17,16 @@ import {
   IconMap2,
   IconPhoneCall,
 } from '@tabler/icons-react'
+import { useEffect } from 'react'
+import { initDB } from 'react-indexed-db-hook'
 
 export default function InitialCard() {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      initDB(DBConfig)
+    }
+  }, [])
+
   return (
     <Card className={'col-span-full lg:col-span-5'}>
       <CardHeader>

@@ -1,17 +1,156 @@
+import { Button } from '#/components/ui/button'
 import { Field, FieldGroup, FieldLabel } from '#/components/ui/field'
 import { Input } from '#/components/ui/input'
+import { useSession } from '#/lib/auth-client'
 import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
 import { IconCamera } from '@tabler/icons-react'
+import { XCircle } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useDropzone } from 'react-dropzone'
 import { Controller, useFormContext } from 'react-hook-form'
+import { useIndexedDB } from 'react-indexed-db-hook'
+import { toast } from 'sonner'
+
+interface ExtendedFile extends File {
+  preview: string
+}
+
+type FormFields =
+  'fullName' | 'jobTitle' | 'displayEmail' | 'phone' | 'address' | 'avatar'
+
+type BaseDetailsFormFields = Pick<PersonalDetailsFormData, FormFields>
+
+async function fileToDataUrl(file: File) {
+  return new Promise<string>((resolve) => {
+    const reader = new FileReader()
+
+    reader.onload = () => {
+      resolve(reader.result as string)
+    }
+
+    reader.readAsDataURL(file)
+  })
+}
 
 export default function BaseDetails() {
-  const form =
-    useFormContext<
-      Pick<
-        PersonalDetailsFormData,
-        'fullName' | 'jobTitle' | 'displayEmail' | 'phone' | 'address'
-      >
-    >()
+  const [files, setFiles] = useState<ExtendedFile[]>([])
+
+  const { data } = useSession()
+
+  const { clear, update, getByID } = useIndexedDB('userAvatar')
+
+  const form = useFormContext<BaseDetailsFormFields>()
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: { 'image/*': [] },
+    maxSize: 5 * 1024 * 1024, // 5MB
+    multiple: false,
+    maxFiles: 1,
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          }),
+        ),
+      )
+    },
+  })
+
+  useEffect(() => {
+    // Revoke the data uris to avoid memory leaks on unmount
+    return () => files.forEach((file) => URL.revokeObjectURL(file.preview))
+  }, [files])
+
+  useEffect(() => {
+    if (data) {
+      getByID(data.user.id).then((savedAvatar) => {
+        setFiles(
+          savedAvatar
+            ? [
+                {
+                  ...savedAvatar.avatar,
+                  preview: URL.createObjectURL(savedAvatar.avatar),
+                },
+              ]
+            : [],
+        )
+
+        fileToDataUrl(savedAvatar?.avatar as File).then((dataUrl) => {
+          form.setValue('avatar', dataUrl || '', {
+            shouldDirty: true,
+            shouldTouch: true,
+          })
+        })
+
+        // form.setValue(
+        //   'avatar',
+        //   savedAvatar ? URL.createObjectURL(savedAvatar.avatar) : '',
+        //   { shouldDirty: true, shouldTouch: true },
+        // )
+      })
+    }
+  }, [data, getByID, form])
+
+  function handleRemovePhoto() {
+    toast.promise(clear(), {
+      loading: 'Removing photo...',
+      success: () => {
+        setFiles([])
+        form.setValue('avatar', '', { shouldDirty: true, shouldTouch: true })
+        return 'Photo removed from IndexedDB!'
+      },
+      error: 'Failed to remove photo from IndexedDB.',
+    })
+  }
+
+  function handleUploadPhoto(file: File) {
+    toast.promise(
+      Promise.all([
+        clear(),
+        update({
+          id: data?.user.id || 1, // Use user ID or a default value
+          name: 'avatar',
+          avatar: file,
+        }),
+      ]),
+      {
+        loading: 'Uploading photo...',
+        success: 'Photo uploaded successfully!',
+        error: 'Failed to upload photo.',
+      },
+    )
+  }
+
+  const thumbs = files.map((file) => (
+    <div key={crypto.randomUUID()}>
+      <img
+        src={file.preview}
+        onLoad={() => URL.revokeObjectURL(file.preview)}
+        alt={file.name}
+      />
+    </div>
+  ))
+
+  function PreviewAvatar() {
+    return (
+      <div className={'relative'}>
+        <div className={'size-24 mx-auto rounded-lg overflow-hidden'}>
+          {thumbs}
+        </div>
+        <Button
+          size={'icon-xs'}
+          variant={'destructive'}
+          type="button"
+          onClick={() => handleRemovePhoto()}
+          className={'absolute top-0 right-0 z-10'}
+        >
+          <span className={'sr-only'}>Remove photo</span>
+          <XCircle className={'size-4'} />
+        </Button>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -45,20 +184,51 @@ export default function BaseDetails() {
             )}
           />
         </FieldGroup>
-        <Field className={'col-span-full md:col-span-2'}>
-          <FieldLabel htmlFor="photo" className={'text-center w-full'}>
-            Photo
-          </FieldLabel>
-          <Input
-            id="photo"
-            type="file"
-            placeholder="Upload your photo"
-            // className="hidden"
-          />
-          <div className={'bg-accent rounded-lg'} id="photo">
-            <IconCamera className={'size-18 mx-auto stroke-1'} />
-          </div>
-        </Field>
+
+        <Controller
+          name="avatar"
+          control={form.control}
+          render={({ field }) => (
+            <Field className={'col-span-full md:col-span-2'}>
+              <FieldLabel htmlFor="photo" className={'text-center w-full'}>
+                Photo
+              </FieldLabel>
+
+              <div className={'h-full w-full'}>
+                {files.length > 0 ? (
+                  <PreviewAvatar />
+                ) : (
+                  <div {...getRootProps({ className: 'dropzone h-full' })}>
+                    <input
+                      {...getInputProps({ name: 'avatar' })}
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0]
+                        if (file) {
+                          const dataUrl = await fileToDataUrl(file)
+                          field.onChange(dataUrl)
+                          handleUploadPhoto(file)
+                          // const preview = URL.createObjectURL(file)
+                          // setFiles([{ ...file, preview }])
+                          // field.onChange(preview)
+                          // // Save the avatar to IndexedDB
+                          // handleUploadPhoto(file)
+                        }
+                      }}
+                    />
+                    <div
+                      className={
+                        'bg-accent rounded-lg h-full w-full inline-flex items-center justify-center'
+                      }
+                      id="photo"
+                    >
+                      <IconCamera className={'size-18 mx-auto stroke-1'} />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </Field>
+          )}
+        />
       </div>
 
       <Controller
