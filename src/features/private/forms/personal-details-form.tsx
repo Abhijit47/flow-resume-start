@@ -10,9 +10,9 @@ import { IconBulb } from '@tabler/icons-react'
 
 import { Field, FieldGroup, FieldSeparator } from '#/components/ui/field'
 
-import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
-// import { updateIsEnabledFirstForm } from '#/store/resume-store'
 import { ScrollArea } from '#/components/ui/scroll-area'
+import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
+import { updateIsEnabledFirstForm } from '#/store/resume-store'
 import { Check } from 'lucide-react'
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form'
 import { useFormContext } from 'react-hook-form'
@@ -29,7 +29,7 @@ export default function PersonalDetailsForm() {
 
   const onSubmit: SubmitHandler<PersonalDetailsFormData> = (data) => {
     console.log('Form Data:', data)
-    // updateIsEnabledFirstForm(false)
+    updateIsEnabledFirstForm(false)
   }
 
   return (

@@ -1,3 +1,4 @@
+import { DBConfig } from '#/constants/indexDB-config'
 import type { Base } from '#/constants/personal-details-field'
 import { personalDetailsField } from '#/constants/personal-details-field'
 import { socialProfileField } from '#/constants/social-profiles-field'
@@ -5,8 +6,9 @@ import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-sch
 import { personalDetailsSchema } from '#/lib/validators/personal-info-schema'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
+import { initDB } from 'react-indexed-db-hook'
 
 type ResumeFormContextType = {
   selectedField: Base[]
@@ -137,6 +139,12 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
 
     multiFieldOpts,
   }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      initDB(DBConfig)
+    }
+  }, [])
 
   return (
     <ResumeFormContext.Provider value={values}>
