@@ -33,7 +33,7 @@ export function useAudioRecorder() {
   }, [])
 
   const stopRecording = useCallback(async (): Promise<string | null> => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const mediaRecorder = mediaRecorderRef.current
       if (!mediaRecorder) {
         resolve(null)
@@ -57,14 +57,16 @@ export function useAudioRecorder() {
           )
           formData.append('model', 'whisper-1')
 
-          const response = await fetch('/demo/api/transcription', {
+          const response = await fetch('/demo/api/ai/transcription', {
             method: 'POST',
             body: formData,
           })
 
           if (!response.ok) {
             const errorData = await response.json()
-            throw new Error(errorData.error || 'Transcription failed')
+            // throw new Error(errorData.error || 'Transcription failed')
+            reject(new Error(errorData.error || 'Transcription failed'))
+            return
           }
 
           const result = await response.json()

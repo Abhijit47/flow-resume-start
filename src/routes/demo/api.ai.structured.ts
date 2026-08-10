@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
 import { chat } from '@tanstack/ai'
 import { openaiText } from '@tanstack/ai-openai'
+import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 
 // Schema for structured recipe output
@@ -68,7 +68,7 @@ export const Route = createFileRoute('/demo/api/ai/structured')({
                 },
               ],
               outputSchema: RecipeSchema,
-            } as any)
+            })
 
             return new Response(
               JSON.stringify({

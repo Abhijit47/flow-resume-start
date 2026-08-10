@@ -1,6 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router'
 import { generateTranscription } from '@tanstack/ai'
+import type { OpenAITranscriptionModel } from '@tanstack/ai-openai'
 import { openaiTranscription } from '@tanstack/ai-openai'
+import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/demo/api/ai/transcription')({
   server: {
@@ -38,7 +39,7 @@ export const Route = createFileRoute('/demo/api/ai/transcription')({
         }
 
         try {
-          const adapter = openaiTranscription(model as any)
+          const adapter = openaiTranscription(model as OpenAITranscriptionModel)
 
           // Prepare audio data
           let audioData: string | File
