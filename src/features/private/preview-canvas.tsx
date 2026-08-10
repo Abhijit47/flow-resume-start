@@ -1,16 +1,17 @@
-import { Button } from '#/components/ui/button'
-import { Card, CardContent } from '#/components/ui/card'
-import { createResumePDF } from '#/lib/download-resume.functions'
-import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
 import { useMutation } from '@tanstack/react-query'
 import { Link } from '@tanstack/react-router'
 import { useServerFn } from '@tanstack/react-start'
 import { useFormContext, useWatch } from 'react-hook-form'
 import { toast } from 'sonner'
+
+import { Button } from '#/components/ui/button'
+import { Card, CardContent } from '#/components/ui/card'
+import { createResumePDF } from '#/lib/download-resume.functions'
+import type { ResumeFormValues } from '#/lib/validators/resume-schema'
 import { ResumeTemplate } from './resume-template'
 
 export default function PreviewCanvas() {
-  const form = useFormContext<PersonalDetailsFormData>()
+  const form = useFormContext<ResumeFormValues>()
 
   const watchedValues = useWatch({
     control: form.control,

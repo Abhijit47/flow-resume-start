@@ -1,31 +1,32 @@
+import { ClientOnly, createFileRoute } from '@tanstack/react-router'
+
 import { ResumeFormContextProvider } from '#/contexts/resume-form-context'
-import PersonalDetailsForm from '#/features/private/forms/personal-details-form'
-// import PersonalDetails from '#/features/private/forms/personal-details'
-import InitialCard from '#/features/private/initial-card'
 import PreviewCanvas from '#/features/private/preview-canvas'
-import { resumeStore } from '#/store/resume-store'
-import { createFileRoute } from '@tanstack/react-router'
-import { useSelector } from '@tanstack/react-store'
+import ResumeEditor from '#/features/private/resume-editor'
 
 export const Route = createFileRoute('/_private/resume/content')({
   staticData: { showSidebar: false },
+  loader: async ({ context }) => {
+    return { user: context.user }
+  },
   component: RouteComponent,
+  wrapInSuspense: true,
+  codeSplitGroupings: [['loader', 'component']],
 })
 
 function RouteComponent() {
-  const isEnabledFirstForm = useSelector(
-    resumeStore,
-    (state) => state.isEnabledFirstForm,
-  )
+  const { user } = Route.useLoaderData()
 
   return (
-    <div className="px-4 lg:px-6 py-4 md:py-6">
-      <div className={'grid grid-cols-12 gap-6'}>
-        <ResumeFormContextProvider>
-          {!isEnabledFirstForm ? <InitialCard /> : <PersonalDetailsForm />}
+    <div className="px-2 lg:px-4 py-2 md:py-4">
+      <div className={'grid grid-cols-12 gap-2'}>
+        <ClientOnly fallback={<div>Loading...</div>}>
+          <ResumeFormContextProvider user={user}>
+            <ResumeEditor />
 
-          <PreviewCanvas />
-        </ResumeFormContextProvider>
+            <PreviewCanvas />
+          </ResumeFormContextProvider>
+        </ClientOnly>
       </div>
     </div>
   )

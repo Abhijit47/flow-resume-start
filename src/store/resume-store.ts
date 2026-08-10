@@ -1,3 +1,4 @@
+import type { ResumeFormValues } from '#/lib/validators/resume-schema'
 import { createStore } from '@tanstack/store'
 
 export const resumeStore = createStore({
@@ -77,7 +78,9 @@ export const updateIsEnabledFirstForm = (isEnabled: boolean) => {
   })
 }
 
-export const updatePersonalDetailsState = (personalDetails: any) => {
+export const updatePersonalDetailsState = (
+  personalDetails: ResumeFormValues['personalDetails'],
+) => {
   // const currentState = store.get()
 
   resumeStore.setState((state) => {
@@ -92,11 +95,23 @@ export const updatePersonalDetailsState = (personalDetails: any) => {
       },
     }
   })
-
-  // store.setState((state: { dogs: number; cats: number }) => {
-  //   return {
-  //     ...state,
-  //     [animal]: state[animal] + 1,
-  //   }
-  // })
 }
+
+export const updateContents = (content: ResumeFormValues['contents']) => {
+  resumeStore.setState((state) => {
+    return {
+      ...state,
+      resume: {
+        ...state.resume,
+        contents: content,
+      },
+    }
+  })
+}
+// usage
+// const isEnabledFirstForm = resumeStore.getState().isEnabledFirstForm
+// const personalDetails = resumeStore.getState().resume.personalDetails
+// const contents = resumeStore.getState().resume.contents
+// updateIsEnabledFirstForm(true)
+// updatePersonalDetailsState({ fullName: 'John Doe' })
+// updateContents({ summary: [{ text: 'New summary' }] })

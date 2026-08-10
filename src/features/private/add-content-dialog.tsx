@@ -1,3 +1,5 @@
+import { IconPlus } from '@tabler/icons-react'
+
 import { Button } from '#/components/ui/button'
 import {
   Card,
@@ -15,27 +17,148 @@ import {
   DialogTrigger,
 } from '#/components/ui/dialog'
 import { ScrollArea } from '#/components/ui/scroll-area'
-import { IconPlus } from '@tabler/icons-react'
-import type { LucideIcon } from 'lucide-react'
-import {
-  AwardIcon,
-  BrainCogIcon,
-  BriefcaseBusinessIcon,
-  Building2Icon,
-  FileBadge2Icon,
-  FolderGit2,
-  Globe2Icon,
-  GuitarIcon,
-  IdCardIcon,
-  LibraryBigIcon,
-  NewspaperIcon,
-  PencilLineIcon,
-  PuzzleIcon,
-  RefreshCcwDotIcon,
-  School2Icon,
-} from 'lucide-react'
+import { contentItems } from '#/constants/content-items'
+import { useResumeFormContext } from '#/contexts/resume-form-context'
+import { toast } from 'sonner'
 
 export default function AddContentDialog() {
+  const {
+    summaryOpts: { append: summaryAppend },
+    educationOpts: { append: educationAppend },
+    workOpts: { append: workAppend },
+    skillsOpts: { append: skillsAppend },
+    languagesOpts: { append: languagesAppend },
+    certificatesOpts: { append: certificatesAppend },
+    interestsOpts: { append: interestsAppend },
+    projectsOpts: { append: projectsAppend },
+    coursesOpts: { append: coursesAppend },
+    awardsOpts: { append: awardsAppend },
+    organisationsOpts: { append: organisationsAppend },
+    publicationsOpts: { append: publicationsAppend },
+    referencesOpts: { append: referencesAppend },
+    declarationOpts: { append: declarationAppend },
+  } = useResumeFormContext()
+
+  function handleAddContent(item: (typeof contentItems)[number]) {
+    switch (item.slug) {
+      case 'summary':
+        summaryAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          text: '',
+        })
+        break
+
+      case 'education':
+        educationAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          degree: '',
+        })
+        break
+
+      case 'work':
+        workAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          jobTitle: '',
+        })
+        break
+
+      case 'skills':
+        skillsAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          skill: '',
+        })
+        break
+
+      case 'languages':
+        languagesAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          language: '',
+        })
+        break
+
+      case 'certificates':
+        certificatesAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          certificate: '',
+        })
+        break
+
+      case 'interests':
+        interestsAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          interest: '',
+        })
+        break
+
+      case 'projects':
+        projectsAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          projectTitle: '',
+        })
+        break
+
+      case 'courses':
+        coursesAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          courseTitle: '',
+        })
+        break
+
+      case 'awards':
+        awardsAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          awardTitle: '',
+        })
+        break
+
+      case 'organisations':
+        organisationsAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          organisation: '',
+        })
+        break
+
+      case 'publications':
+        publicationsAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          title: '',
+        })
+        break
+
+      case 'references':
+        referencesAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          name: '',
+        })
+        break
+
+      case 'declaration':
+        declarationAppend({
+          isHidden: false,
+          showPlaceholder: false,
+          declarationText: '',
+        })
+        break
+
+      default:
+        toast('not implemented yet')
+        break
+    }
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -59,8 +182,12 @@ export default function AddContentDialog() {
               'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'
             }
           >
-            {items.map((item) => (
-              <Card key={item.id} className={'cursor-pointer'}>
+            {contentItems.map((item) => (
+              <Card
+                key={item.id}
+                className={'cursor-pointer'}
+                onClick={() => handleAddContent(item)}
+              >
                 <CardHeader>
                   <CardAction>
                     <item.icon className={'size-6'} />
@@ -78,118 +205,3 @@ export default function AddContentDialog() {
     </Dialog>
   )
 }
-
-interface Items {
-  id: string // use cryto.randomUUID()
-  title: string
-  description: string
-  icon: LucideIcon
-}
-
-const items: Items[] = [
-  {
-    id: crypto.randomUUID(),
-    title: 'Summary',
-    description:
-      'Add a short summary of your key strengths, experience, and career goals.',
-    icon: IdCardIcon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Education',
-    description:
-      'Add your degrees and schools. Include your focus, honors, or exchange terms.',
-    icon: School2Icon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Professional Experience',
-    description:
-      'Add your professional roles and employer history including internships.',
-    icon: BriefcaseBusinessIcon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Skills',
-    description:
-      'Add your hard and soft skills that help you stand out from the crowd today.',
-    icon: BrainCogIcon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Languages',
-    description:
-      'Add your languages and proficiency level to show your communication range.',
-    icon: Globe2Icon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Certificates',
-    description:
-      'Add your industry certificates or licences. Include issuer and date earned.',
-    icon: FileBadge2Icon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Interests',
-    description:
-      'Add relevant personal interests that support your career story and cultural fit.',
-    icon: GuitarIcon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Projects',
-    description:
-      'Add key projects you participated in and highlight your challenges, role, and impact.',
-    icon: FolderGit2,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Courses',
-    description:
-      'Add online or in-person courses and trainings you joined and completed.',
-    icon: LibraryBigIcon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Awards',
-    description:
-      'Add your awards and recognitions from industry, competitions, or academia.',
-    icon: AwardIcon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Organisations',
-    description:
-      'Add your memberships or volunteering with organisations including your role.',
-    icon: Building2Icon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Publications',
-    description:
-      'Add publications, articles, or books you wrote or contributed to.',
-    icon: NewspaperIcon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'References',
-    description:
-      'Add your references from managers or coworkers, including their contact details.',
-    icon: RefreshCcwDotIcon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Declaration',
-    description:
-      'Add your declaration by creating or uploading your personal signature.',
-    icon: PencilLineIcon,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Custom',
-    description:
-      'Add a custom section for anything else, or combine sections cleanly.',
-    icon: PuzzleIcon,
-  },
-]

@@ -3,7 +3,7 @@ import z from 'zod'
 export const basePersonalDetailsSchema = z.object({
   fullName: z.string().optional(),
   jobTitle: z.string().optional(),
-  displayEmail: z.email().optional(),
+  displayEmail: z.string().optional(),
   phone: z.string().optional(),
   address: z.string().optional(),
   avatar: z.string().optional(), // URL or base64 string of the avatar image

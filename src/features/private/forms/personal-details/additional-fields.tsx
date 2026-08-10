@@ -1,3 +1,6 @@
+import { XIcon } from 'lucide-react'
+import { Controller, useFormContext } from 'react-hook-form'
+
 import { Field, FieldGroup, FieldLabel } from '#/components/ui/field'
 import {
   InputGroup,
@@ -6,12 +9,10 @@ import {
   InputGroupInput,
 } from '#/components/ui/input-group'
 import { useResumeFormContext } from '#/contexts/resume-form-context'
-import type { AdditionalPersonalDetailsSchema } from '#/lib/validators/personal-info-schema'
-import { XIcon } from 'lucide-react'
-import { Controller, useFormContext } from 'react-hook-form'
+import type { ResumeFormValues } from '#/lib/validators/resume-schema'
 
 export default function AdditionalFields() {
-  const form = useFormContext<AdditionalPersonalDetailsSchema>()
+  const form = useFormContext<ResumeFormValues>()
 
   const { selectedField, removeSelectedField } = useResumeFormContext()
 
@@ -20,7 +21,7 @@ export default function AdditionalFields() {
       {selectedField.map((f) => (
         <Controller
           key={f.field}
-          name={f.field}
+          name={`personalDetails.${f.field}`}
           control={form.control}
           render={({ field: controllerField }) => (
             <Field>
@@ -39,7 +40,7 @@ export default function AdditionalFields() {
                     variant="destructive"
                     onClick={() => {
                       removeSelectedField(f)
-                      form.setValue(f.field, undefined, {
+                      form.setValue(`personalDetails.${f.field}`, undefined, {
                         shouldDirty: false,
                         shouldTouch: false,
                         shouldValidate: false,

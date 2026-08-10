@@ -1,8 +1,3 @@
-import { Button } from '#/components/ui/button'
-import { Field, FieldGroup, FieldLabel } from '#/components/ui/field'
-import { Input } from '#/components/ui/input'
-import { useSession } from '#/lib/auth-client'
-import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
 import { IconCamera } from '@tabler/icons-react'
 import { XCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -11,14 +6,23 @@ import { Controller, useFormContext } from 'react-hook-form'
 import { useIndexedDB } from 'react-indexed-db-hook'
 import { toast } from 'sonner'
 
+import { Button } from '#/components/ui/button'
+import { Field, FieldGroup, FieldLabel } from '#/components/ui/field'
+import { Input } from '#/components/ui/input'
+import { useSession } from '#/lib/auth-client'
+import type { ResumeFormValues } from '#/lib/validators/resume-schema'
+
 interface ExtendedFile extends File {
   preview: string
 }
 
-type FormFields =
-  'fullName' | 'jobTitle' | 'displayEmail' | 'phone' | 'address' | 'avatar'
+// type FormFields =
+//   'fullName' | 'jobTitle' | 'displayEmail' | 'phone' | 'address' | 'avatar'
 
-type BaseDetailsFormFields = Pick<PersonalDetailsFormData, FormFields>
+// type BaseDetailsFormFields = Pick<
+//   ResumeFormValues['personalDetails'],
+//   'fullName' | 'jobTitle' | 'displayEmail' | 'phone' | 'address' | 'avatar'
+// >
 
 async function fileToDataUrl(file: File) {
   return new Promise<string>((resolve) => {
@@ -39,7 +43,7 @@ export default function BaseDetails() {
 
   const { clear, update, getByID } = useIndexedDB('userAvatar')
 
-  const form = useFormContext<BaseDetailsFormFields>()
+  const form = useFormContext<ResumeFormValues>()
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: { 'image/*': [] },
@@ -77,7 +81,7 @@ export default function BaseDetails() {
         )
 
         fileToDataUrl(savedAvatar?.avatar as File).then((dataUrl) => {
-          form.setValue('avatar', dataUrl || '', {
+          form.setValue('personalDetails.avatar', dataUrl || '', {
             shouldDirty: true,
             shouldTouch: true,
           })
@@ -97,7 +101,10 @@ export default function BaseDetails() {
       loading: 'Removing photo...',
       success: () => {
         setFiles([])
-        form.setValue('avatar', '', { shouldDirty: true, shouldTouch: true })
+        form.setValue('personalDetails.avatar', '', {
+          shouldDirty: true,
+          shouldTouch: true,
+        })
         return 'Photo removed from IndexedDB!'
       },
       error: 'Failed to remove photo from IndexedDB.',
@@ -157,7 +164,7 @@ export default function BaseDetails() {
       <div className={'grid grid-cols-6 gap-4'}>
         <FieldGroup className={'col-span-full md:col-span-4'}>
           <Controller
-            name="fullName"
+            name="personalDetails.fullName"
             control={form.control}
             render={({ field }) => (
               <Field>
@@ -168,7 +175,7 @@ export default function BaseDetails() {
           />
 
           <Controller
-            name="jobTitle"
+            name="personalDetails.jobTitle"
             control={form.control}
             render={({ field }) => (
               <Field>
@@ -186,7 +193,7 @@ export default function BaseDetails() {
         </FieldGroup>
 
         <Controller
-          name="avatar"
+          name="personalDetails.avatar"
           control={form.control}
           render={({ field }) => (
             <Field className={'col-span-full md:col-span-2'}>
@@ -232,7 +239,7 @@ export default function BaseDetails() {
       </div>
 
       <Controller
-        name="displayEmail"
+        name="personalDetails.displayEmail"
         control={form.control}
         render={({ field }) => (
           <Field>
@@ -243,7 +250,7 @@ export default function BaseDetails() {
       />
 
       <Controller
-        name="phone"
+        name="personalDetails.phone"
         control={form.control}
         render={({ field }) => (
           <Field>
@@ -254,7 +261,7 @@ export default function BaseDetails() {
       />
 
       <Controller
-        name="address"
+        name="personalDetails.address"
         control={form.control}
         render={({ field }) => (
           <Field>

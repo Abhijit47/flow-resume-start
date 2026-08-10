@@ -1,7 +1,7 @@
-import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
+import type { ResumeFormValues } from '#/lib/validators/resume-schema'
 
 type ResumeTemplateProps = {
-  data: PersonalDetailsFormData
+  data: Partial<ResumeFormValues>
 }
 
 export function ResumeTemplate({ data }: ResumeTemplateProps) {
@@ -14,67 +14,67 @@ export function ResumeTemplate({ data }: ResumeTemplateProps) {
         fontFamily: 'sans-serif',
       }}
     >
-      <h1>fullName: {data.fullName}</h1>
-      <p>jobTitle: {data.jobTitle}</p>
+      <h1>fullName: {data.personalDetails?.fullName}</h1>
+      <p>jobTitle: {data.personalDetails?.jobTitle}</p>
 
       <div>
         <img
-          src={data.avatar}
+          src={data.personalDetails?.avatar}
           alt="Avatar"
           style={{ width: '100px', height: '100px', objectFit: 'cover' }}
         />
       </div>
 
-      <p>{data.displayEmail}</p>
+      <p>{data.personalDetails?.displayEmail}</p>
 
-      <p>{data.phone}</p>
+      <p>{data.personalDetails?.phone}</p>
 
-      <p>{data.address}</p>
+      <p>{data.personalDetails?.address}</p>
 
       <div>
         <h2>Social Links</h2>
-        {data.social?.map((socialItem, index) => (
+        {data.personalDetails?.social?.map((socialItem, index) => (
           <p key={index}>
             {socialItem.display}: {socialItem.link}
           </p>
         ))}
       </div>
 
-      <p>{data.passport}</p>
+      <p>{data.personalDetails?.passport}</p>
 
-      <p>{data.nationality}</p>
+      <p>{data.personalDetails?.nationality}</p>
 
-      <p>{data.visa}</p>
+      <p>{data.personalDetails?.visa}</p>
 
-      <p>{data.birthdayStr}</p>
+      <p>{data.personalDetails?.birthdayStr}</p>
 
-      <p>{data.availability}</p>
+      <p>{data.personalDetails?.availability}</p>
 
-      <p>{data.gender}</p>
+      <p>{data.personalDetails?.gender}</p>
 
-      <p>{data.disability}</p>
+      <p>{data.personalDetails?.disability}</p>
 
-      <p>{data.workMode}</p>
+      <p>{data.personalDetails?.workMode}</p>
 
-      <p>{data.relocation}</p>
+      <p>{data.personalDetails?.relocation}</p>
 
-      <p>{data.expectedSalary}</p>
+      <p>{data.personalDetails?.expectedSalary}</p>
 
-      <p>{data.secondPhone}</p>
+      <p>{data.personalDetails?.secondPhone}</p>
 
-      <p>{data.drivingLicense}</p>
+      <p>{data.personalDetails?.drivingLicense}</p>
 
-      <p>{data.securityClearance}</p>
+      <p>{data.personalDetails?.securityClearance}</p>
 
-      <p>{data.maritalStatus}</p>
+      <p>{data.personalDetails?.maritalStatus}</p>
 
-      <p>{data.military}</p>
+      <p>{data.personalDetails?.military}</p>
 
-      <p>{data.smoking}</p>
+      <p>{data.personalDetails?.smoking}</p>
 
-      <p>{data.height}</p>
+      <p>{data.personalDetails?.height}</p>
 
-      <p>{data.weight}</p>
+      <p>{data.personalDetails?.weight}</p>
     </div>
   )
 }

@@ -1,3 +1,8 @@
+import { IconLinkPlus } from '@tabler/icons-react'
+import { CheckCircle, XIcon } from 'lucide-react'
+import { useState } from 'react'
+import { Controller, useFormContext } from 'react-hook-form'
+
 import {
   Field,
   FieldContent,
@@ -17,14 +22,10 @@ import {
 } from '#/components/ui/popover'
 import { useResumeFormContext } from '#/contexts/resume-form-context'
 import { capitalizeString } from '#/lib/utils'
-import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
-import { IconLinkPlus } from '@tabler/icons-react'
-import { CheckCircle, XIcon } from 'lucide-react'
-import { useState } from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
+import type { ResumeFormValues } from '#/lib/validators/resume-schema'
 
 export default function SocialLinks() {
-  const form = useFormContext<PersonalDetailsFormData>()
+  const form = useFormContext<ResumeFormValues>()
 
   const {
     multiFieldOpts: { fields, remove },
@@ -34,7 +35,7 @@ export default function SocialLinks() {
     <FieldGroup className="gap-2">
       {fields.map((field, index) => (
         <Controller
-          name={`social.${index}.display` as const}
+          name={`personalDetails.social.${index}.display` as const}
           key={field.id}
           control={form.control}
           render={({ field: controllerField, fieldState }) => (
@@ -101,7 +102,7 @@ function AddSocialLinkPopover({ idx }: { idx: number }) {
   const [url, setUrl] = useState('')
   const [openUrlPopover, setOpenUrlPopover] = useState(false)
 
-  const form = useFormContext<PersonalDetailsFormData>()
+  const form = useFormContext<ResumeFormValues>()
 
   return (
     <Popover open={openUrlPopover} onOpenChange={setOpenUrlPopover}>
@@ -119,11 +120,13 @@ function AddSocialLinkPopover({ idx }: { idx: number }) {
       </PopoverTrigger>
       <PopoverContent className="w-80" align="end">
         <Controller
-          name={`social.${idx}.link` as const}
+          name={`personalDetails.social.${idx}.link` as const}
           control={form.control}
           render={({ field: controllerField }) => (
             <Field>
-              <FieldLabel htmlFor={`form-rhf-array-social-${idx}-url`}>
+              <FieldLabel
+                htmlFor={`form-rhf-array-personalDetails-social-${idx}-url`}
+              >
                 Link URL {idx + 1}
               </FieldLabel>
               <InputGroup>
@@ -133,8 +136,8 @@ function AddSocialLinkPopover({ idx }: { idx: number }) {
                   autoComplete="off"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  id={`form-rhf-array-social-${idx}-url`}
-                  placeholder={`Add url ${idx + 1}`}
+                  id={`form-rhf-array-personalDetails-social-${idx}-url`}
+                  placeholder={`Add link URL ${idx + 1}`}
                 />
                 <InputGroupAddon align="inline-end">
                   <InputGroupButton
@@ -142,11 +145,11 @@ function AddSocialLinkPopover({ idx }: { idx: number }) {
                     variant="ghost"
                     size="icon-xs"
                     onClick={() => {
-                      form.setValue(`social.${idx}.link`, url)
+                      form.setValue(`personalDetails.social.${idx}.link`, url)
                       setUrl('')
                       setOpenUrlPopover(false)
                     }}
-                    aria-label={`Add url ${idx + 1}`}
+                    aria-label={`Add link URL ${idx + 1}`}
                   >
                     <CheckCircle />
                   </InputGroupButton>

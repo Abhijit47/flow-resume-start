@@ -1,14 +1,20 @@
+import { DevTool } from '@hookform/devtools'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { createContext, useContext, useState } from 'react'
+import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
+import { initDB } from 'react-indexed-db-hook'
+
+import { defaultValues } from '#/constants/form-default-value'
 import { DBConfig } from '#/constants/indexDB-config'
 import type { Base } from '#/constants/personal-details-field'
 import { personalDetailsField } from '#/constants/personal-details-field'
 import { socialProfileField } from '#/constants/social-profiles-field'
-import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
-import { personalDetailsSchema } from '#/lib/validators/personal-info-schema'
-import { DevTool } from '@hookform/devtools'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { createContext, useContext, useEffect, useState } from 'react'
-import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
-import { initDB } from 'react-indexed-db-hook'
+
+import type { ServerSession } from '#/lib/auth'
+
+import { contentItems } from '#/constants/content-items'
+import type { ResumeFormValues } from '#/lib/validators/resume-schema'
+import { resumeSchema } from '#/lib/validators/resume-schema'
 
 type ResumeFormContextType = {
   selectedField: Base[]
@@ -21,8 +27,51 @@ type ResumeFormContextType = {
   onSearchSocialProfileChange: React.Dispatch<React.SetStateAction<string>>
 
   multiFieldOpts: ReturnType<
-    typeof useFieldArray<PersonalDetailsFormData, 'social'>
+    typeof useFieldArray<ResumeFormValues, 'personalDetails.social'>
   >
+
+  summaryOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.summary'>
+  >
+  educationOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.education'>
+  >
+  workOpts: ReturnType<typeof useFieldArray<ResumeFormValues, 'contents.work'>>
+  skillsOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.skills'>
+  >
+  languagesOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.languages'>
+  >
+  certificatesOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.certificates'>
+  >
+  interestsOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.interests'>
+  >
+  projectsOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.projects'>
+  >
+  coursesOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.courses'>
+  >
+  awardsOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.awards'>
+  >
+  organisationsOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.organisations'>
+  >
+  publicationsOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.publications'>
+  >
+  referencesOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.references'>
+  >
+  declarationOpts: ReturnType<
+    typeof useFieldArray<ResumeFormValues, 'contents.declaration'>
+  >
+
+  filteredContentItems: typeof contentItems
 }
 
 const ResumeFormContext = createContext<ResumeFormContextType | undefined>(
@@ -31,8 +80,10 @@ const ResumeFormContext = createContext<ResumeFormContextType | undefined>(
 
 type ResumeFormProviderProps = {
   children: React.ReactNode
+  user: ServerSession['user']
 }
 
+initDB(DBConfig)
 export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
   const { children } = props
 
@@ -63,42 +114,18 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
     )
   }
 
-  const form = useForm<PersonalDetailsFormData>({
-    resolver: zodResolver(personalDetailsSchema),
+  const form = useForm<ResumeFormValues>({
+    resolver: zodResolver(resumeSchema),
     defaultValues: {
-      fullName: '',
-      jobTitle: '',
-      displayEmail: '',
-      phone: '',
-      address: '',
-      // social: [{ link: '', display: '' }], // Initialize with one empty social profile
-      social: undefined,
-
-      passport: '',
-      nationality: '',
-      visa: '',
-      birthdayStr: '',
-      availability: '',
-      gender: '',
-      disability: '',
-      workMode: '',
-      relocation: '',
-      expectedSalary: '',
-      secondPhone: '',
-      drivingLicense: '',
-      securityClearance: '',
-      maritalStatus: '',
-      military: '',
-      smoking: '',
-      height: '',
-      weight: '',
+      ...defaultValues,
+      // userId: user.id,
     },
     mode: 'onChange',
   })
 
   const multiFieldOpts = useFieldArray({
     control: form.control,
-    name: 'social', // name of the field array
+    name: 'personalDetails.social', // name of the field array
   })
 
   const filteredSocialProfileField =
@@ -127,6 +154,86 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
   //       .filter((field) => field.display !== undefined)
   //       .map((field) => field.display ?? socialProfileField)
 
+  const filteredContentItems = contentItems.filter((item) => {
+    // Check if the item.slug is already in the form's contents object
+    const isItemInForm = Object.keys(form.getValues('contents')).some(
+      (key) => key === item.slug,
+    )
+
+    // Include the item if it's not already in the form's contents object
+    return isItemInForm
+  })
+
+  const summaryOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.summary', // name of the field array
+  })
+
+  const educationOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.education', // name of the field array
+  })
+
+  const workOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.work', // name of the field array
+  })
+
+  const skillsOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.skills', // name of the field array
+  })
+
+  const languagesOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.languages', // name of the field array
+  })
+
+  const certificatesOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.certificates', // name of the field array
+  })
+
+  const interestsOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.interests', // name of the field array
+  })
+
+  const projectsOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.projects', // name of the field array
+  })
+
+  const coursesOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.courses', // name of the field array
+  })
+
+  const awardsOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.awards', // name of the field array
+  })
+
+  const organisationsOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.organisations', // name of the field array
+  })
+
+  const publicationsOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.publications', // name of the field array
+  })
+
+  const referencesOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.references', // name of the field array
+  })
+
+  const declarationOpts = useFieldArray({
+    control: form.control,
+    name: 'contents.declaration', // name of the field array
+  })
+
   const values: ResumeFormContextType = {
     selectedField,
     filteredPersonalField,
@@ -138,13 +245,24 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
     onSearchSocialProfileChange: setSearchSocialProfile,
 
     multiFieldOpts,
-  }
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      initDB(DBConfig)
-    }
-  }, [])
+    filteredContentItems,
+
+    summaryOpts,
+    educationOpts,
+    workOpts,
+    skillsOpts,
+    languagesOpts,
+    certificatesOpts,
+    interestsOpts,
+    projectsOpts,
+    coursesOpts,
+    awardsOpts,
+    organisationsOpts,
+    publicationsOpts,
+    referencesOpts,
+    declarationOpts,
+  }
 
   return (
     <ResumeFormContext.Provider value={values}>

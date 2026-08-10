@@ -1,15 +1,15 @@
-import { createServerFn } from '@tanstack/react-start'
 import fs from 'node:fs'
+import { join } from 'node:path'
+
+import { createServerFn } from '@tanstack/react-start'
 import puppeteer from 'puppeteer'
 import { renderToStaticMarkup } from 'react-dom/server'
 
-import { personalDetailsSchema } from './validators/personal-info-schema'
-
 import { ResumeTemplate } from '#/features/private/resume-template'
-import { join } from 'node:path'
+import { resumeSchema } from './validators/resume-schema'
 
 export const createResumePDF = createServerFn({ method: 'POST' })
-  .validator(personalDetailsSchema)
+  .validator(resumeSchema.partial())
   .handler(async ({ data }) => {
     try {
       const browser = await puppeteer.launch()
@@ -46,8 +46,8 @@ export const createResumePDF = createServerFn({ method: 'POST' })
         printBackground: true,
       })
 
-      const fileName = data.fullName
-        ? `${data.fullName.toLowerCase().replace(/\s+/g, '-')}-${crypto.randomUUID()}`
+      const fileName = data.personalDetails?.fullName
+        ? `${data.personalDetails.fullName.toLowerCase().replace(/\s+/g, '-')}-${crypto.randomUUID()}`
         : `user-${crypto.randomUUID()}`
 
       const filePath = join(process.cwd(), 'docs', `${fileName}-resume.pdf`)
