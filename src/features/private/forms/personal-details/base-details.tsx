@@ -11,6 +11,7 @@ import { Field, FieldGroup, FieldLabel } from '#/components/ui/field'
 import { Input } from '#/components/ui/input'
 import { useSession } from '#/lib/auth-client'
 import type { ResumeFormValues } from '#/lib/validators/resume-schema'
+import { resumeStore } from '#/store/resume-store'
 
 interface ExtendedFile extends File {
   preview: string
@@ -44,6 +45,8 @@ export default function BaseDetails() {
   const { clear, update, getByID } = useIndexedDB('userAvatar')
 
   const form = useFormContext<ResumeFormValues>()
+
+  const { updateFullName } = resumeStore.actions
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: { 'image/*': [] },
@@ -169,7 +172,15 @@ export default function BaseDetails() {
             render={({ field }) => (
               <Field>
                 <FieldLabel htmlFor="full-name">Full name</FieldLabel>
-                <Input id="full-name" placeholder="Evil Rabbit" {...field} />
+                <Input
+                  id="full-name"
+                  placeholder="Evil Rabbit"
+                  {...field}
+                  onChange={(e) => {
+                    field.onChange(e.target.value)
+                    updateFullName(e.target.value)
+                  }}
+                />
               </Field>
             )}
           />
