@@ -1,6 +1,6 @@
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
 import { initDB } from 'react-indexed-db-hook'
 
@@ -263,6 +263,12 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
     referencesOpts,
     declarationOpts,
   }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // initDB(DBConfig)
+    }
+  }, [])
 
   return (
     <ResumeFormContext.Provider value={values}>

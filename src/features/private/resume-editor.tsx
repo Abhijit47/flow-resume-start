@@ -28,9 +28,7 @@ export default function ResumeEditor() {
   )
 
   return (
-    <ScrollArea
-      className={'h-dvh overflow-y-hidden col-span-full lg:col-span-5 w-full'}
-    >
+    <ScrollArea className={'h-dvh overflow-y-hidden w-full'}>
       {!isEnabledFirstForm ? (
         <div className={'pr-4 space-y-4'}>
           <InitialCard />

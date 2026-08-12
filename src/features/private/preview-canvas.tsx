@@ -35,7 +35,7 @@ export default function PreviewCanvas() {
   }
 
   return (
-    <Card className={'col-span-full lg:col-span-7'}>
+    <Card>
       <CardContent>
         <ResumeTemplate data={watchedValues} />
 
