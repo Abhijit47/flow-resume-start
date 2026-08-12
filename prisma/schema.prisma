@@ -3,6 +3,13 @@ generator client {
   output   = "../src/generated/prisma"
 }
 
+generator erd {
+  provider                  = "prisma-erd-generator"
+  output                    = "../docs/ERD.png" // .svg, .pdf, .md
+  theme                     = "forest" // default, dark, forest, neutral
+  includeRelationFromFields = true
+}
+
 datasource db {
   provider = "postgresql"
 }

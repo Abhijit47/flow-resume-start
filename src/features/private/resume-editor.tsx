@@ -13,7 +13,7 @@ import { DeclarationContent } from './contents/declaration'
 import EducationContent from './contents/education'
 import InterestsContent from './contents/interests'
 import LanguagesContent from './contents/languages'
-import OrganisationsContent from './contents/organisations'
+import OrganizationsContent from './contents/organizations'
 import ProjectsContent from './contents/projects'
 import PublicationsContent from './contents/publications'
 import ReferencesContent from './contents/references'
@@ -44,7 +44,7 @@ export default function ResumeEditor() {
           <ProjectsContent />
           <CoursesContent />
           <AwardsContent />
-          <OrganisationsContent />
+          <OrganizationsContent />
           <PublicationsContent />
           <ReferencesContent />
           <DeclarationContent />

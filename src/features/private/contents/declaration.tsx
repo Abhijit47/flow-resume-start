@@ -1,7 +1,3 @@
-import { IconTrash } from '@tabler/icons-react'
-import { ChevronsUpDownIcon, EyeIcon, EyeOffIcon } from 'lucide-react'
-import { useState } from 'react'
-
 import { Button } from '#/components/ui/button'
 import {
   Card,
@@ -27,14 +23,13 @@ import {
   DialogTrigger,
 } from '#/components/ui/dialog'
 import { Field } from '#/components/ui/field'
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from '#/components/ui/input-group'
 import { Label } from '#/components/ui/label'
+import { Separator } from '#/components/ui/separator'
 import { useResumeFormContext } from '#/contexts/resume-form-context'
+import { IconTrash } from '@tabler/icons-react'
+import { ChevronsUpDownIcon } from 'lucide-react'
+import { useState } from 'react'
+import DeclarationForm from './forms/declaration-form'
 
 export function DeclarationContent() {
   const [isOpen, setIsOpen] = useState(false)
@@ -68,42 +63,12 @@ export function DeclarationContent() {
                 </CollapsibleTrigger>
               </div>
             </CardHeader>
+            <Separator className={'my-2'} />
             <CardContent>
-              <CollapsibleContent className="flex flex-col gap-2 mt-4">
-                {fields.map((field, index) => (
-                  <div key={field.id}>
-                    <Label
-                      htmlFor={`contents.summary.${index}.text`}
-                      className="sr-only"
-                    >
-                      Declaration {index + 1}
-                    </Label>
-
-                    <InputGroup className="h-12!">
-                      <InputGroupInput
-                        placeholder="https://x.com/shadcn"
-                        {...{
-                          ...field,
-                          name: `contents.work.${index}.text`,
-                        }}
-                      />
-                      <InputGroupAddon align="inline-end">
-                        <InputGroupButton
-                          aria-label="Toggle visibility"
-                          title="Toggle visibility"
-                          size="icon-xs"
-                          onClick={() => {
-                            field.isHidden = !field.isHidden
-                          }}
-                        >
-                          {field.isHidden ? (
-                            <EyeIcon className="size-4" />
-                          ) : (
-                            <EyeOffIcon className="size-4" />
-                          )}
-                        </InputGroupButton>
-                      </InputGroupAddon>
-                    </InputGroup>
+              <CollapsibleContent className="data-closed:animate-collapsible-up data-open:animate-collapsible-down flex flex-col gap-4 overflow-hidden transition-all duration-300">
+                {fields.map((fieldItem, fieldIdx) => (
+                  <div key={fieldItem.id}>
+                    <DeclarationForm />
                   </div>
                 ))}
                 <CardFooter className={'px-0'}>

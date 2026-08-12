@@ -1,5 +1,5 @@
 import { IconTrash } from '@tabler/icons-react'
-import { ChevronsUpDownIcon, EyeIcon, EyeOffIcon } from 'lucide-react'
+import { ChevronsUpDownIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 
@@ -28,15 +28,11 @@ import {
   DialogTrigger,
 } from '#/components/ui/dialog'
 import { Field } from '#/components/ui/field'
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from '#/components/ui/input-group'
 import { Label } from '#/components/ui/label'
+import { Separator } from '#/components/ui/separator'
 import { useResumeFormContext } from '#/contexts/resume-form-context'
 import type { ResumeFormValues } from '#/lib/validators/resume-schema'
+import SummaryForm from './forms/summary-form'
 
 export default function SummaryContent() {
   const [isOpen, setIsOpen] = useState(false)
@@ -72,52 +68,25 @@ export default function SummaryContent() {
                 </CollapsibleTrigger>
               </div>
             </CardHeader>
+
+            <Separator className={'my-2'} />
             <CardContent>
-              <CollapsibleContent className="flex flex-col gap-2 mt-4">
-                {fields.map((item, index) => (
+              <CollapsibleContent className="data-closed:animate-collapsible-up data-open:animate-collapsible-down flex flex-col gap-4 overflow-hidden transition-all duration-300">
+                {fields.map((fieldItem, fieldIdx) => (
                   <Controller
-                    key={item.id}
-                    name={`contents.summary.${index}.text` as const}
+                    key={fieldItem.id}
+                    name={`contents.summary.${fieldIdx}.text` as const}
                     control={form.control}
-                    render={({ field }) => (
+                    render={() => (
                       <div>
                         <Label
-                          htmlFor={`contents.summary.${index}.text`}
+                          htmlFor={`contents.summary.${fieldIdx}.text`}
                           className="sr-only"
                         >
-                          Summary {index + 1}
+                          Summary {fieldIdx + 1}
                         </Label>
 
-                        <InputGroup className="h-12!">
-                          <InputGroupInput
-                            placeholder="https://x.com/shadcn"
-                            {...field}
-                          />
-                          <InputGroupAddon align="inline-end">
-                            <InputGroupButton
-                              aria-label="Toggle visibility"
-                              title="Toggle visibility"
-                              size="icon-sm"
-                              onClick={() => {
-                                form.setValue(
-                                  `contents.summary.${index}.isHidden` as const,
-                                  (item.isHidden = !item.isHidden),
-                                  {
-                                    shouldDirty: true,
-                                    shouldTouch: true,
-                                    shouldValidate: true,
-                                  },
-                                )
-                              }}
-                            >
-                              {item.isHidden ? (
-                                <EyeIcon className="size-4" />
-                              ) : (
-                                <EyeOffIcon className="size-4" />
-                              )}
-                            </InputGroupButton>
-                          </InputGroupAddon>
-                        </InputGroup>
+                        <SummaryForm fieldIdx={fieldIdx} />
                       </div>
                     )}
                   />

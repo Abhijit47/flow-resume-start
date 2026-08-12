@@ -22,7 +22,8 @@
     "db:seed": "dotenv -e .env.local -- prisma db seed",
     "db:reset": "dotenv -e .env.local -- pnpx prisma migrate reset",
     "db:dev": "pnpm db:push && pnpm db:generate",
-    "auth:gen": "pnpm dlx auth@latest generate --config \"./src/lib/auth.ts\" --output \"./src/lib/auth-generated.prisma\" --yes"
+    "auth:gen": "pnpm dlx auth@latest generate --config \"./src/lib/auth.ts\" --output \"./src/lib/auth-generated.prisma\" --yes",
+    "db:erd": "dotenv -e .env.local -- pnpx prisma generate"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -35,6 +36,8 @@
     "@fontsource-variable/ibm-plex-sans": "^5.3.0",
     "@fontsource-variable/nunito-sans": "^5.3.0",
     "@hookform/resolvers": "^5.5.7",
+    "@platejs/basic-nodes": "^53.0.0",
+    "@platejs/basic-styles": "^53.0.0",
     "@posthog/react": "^1.7.0",
     "@prisma/adapter-pg": "^7.4.2",
     "@prisma/client": "^7.4.2",
@@ -74,6 +77,7 @@
     "lucide-react": "^0.577.0",
     "next-themes": "^0.4.6",
     "nitro": "3.0.260610-beta",
+    "platejs": "^53.3.3",
     "posthog-js": "^1.358.1",
     "prisma": "^7.4.2",
     "puppeteer": "^25.4.0",
@@ -99,6 +103,7 @@
   "devDependencies": {
     "@hookform/devtools": "^4.4.0",
     "@inlang/paraglide-js": "^2.13.1",
+    "@mermaid-js/mermaid-cli": "^11.16.0",
     "@rolldown/plugin-babel": "^0.2.3",
     "@tailwindcss/typography": "^0.5.16",
     "@tanstack/devtools-event-client": "latest",
@@ -113,6 +118,7 @@
     "dotenv-cli": "^11.0.0",
     "eslint": "^9.20.0",
     "prettier": "^3.8.1",
+    "prisma-erd-generator": "^2.4.4",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2",
     "vite": "^8.0.0"
