@@ -19,9 +19,11 @@ import {
 import { ScrollArea } from '#/components/ui/scroll-area'
 import { contentItems } from '#/constants/content-items'
 import { useResumeFormContext } from '#/contexts/resume-form-context'
+import { useState } from 'react'
 import { toast } from 'sonner'
 
 export default function AddContentDialog() {
+  const [isOpen, setIsOpen] = useState(false)
   const {
     summaryOpts: { append: summaryAppend },
     educationOpts: { append: educationAppend },
@@ -157,10 +159,11 @@ export default function AddContentDialog() {
         toast('not implemented yet')
         break
     }
+    setIsOpen(false)
   }
 
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button size={'lg'}>
           <IconPlus className={'size-4'} /> Add Content

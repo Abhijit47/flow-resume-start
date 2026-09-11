@@ -1,6 +1,6 @@
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
 import { initDB } from 'react-indexed-db-hook'
 
@@ -72,6 +72,8 @@ type ResumeFormContextType = {
   >
 
   filteredContentItems: typeof contentItems
+
+  scrollSectionRef: React.RefObject<HTMLDivElement | null>
 }
 
 const ResumeFormContext = createContext<ResumeFormContextType | undefined>(
@@ -89,6 +91,8 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
 
   const [searchSocialProfile, setSearchSocialProfile] = useState('')
   const [selectedField, setSelectedField] = useState<Base[]>([])
+
+  const scrollSectionRef = useRef<HTMLDivElement>(null)
 
   // const filteredSocialProfileField = searchSocialProfile
   //   ? socialProfileField.filter((field) =>
@@ -262,11 +266,24 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
     publicationsOpts,
     referencesOpts,
     declarationOpts,
+
+    scrollSectionRef,
   }
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // initDB(DBConfig)
+    }
+  }, [])
+
+  // when the component mounts, scroll to the bottom of the sectionRef
+  useEffect(() => {
+    if (scrollSectionRef.current) {
+      // scrollSectionRef.current.scrollTop = scrollSectionRef.current.scrollHeight
+      scrollSectionRef.current.scrollTo({
+        top: scrollSectionRef.current.scrollHeight - 100, // Add some extra space to ensure the last item is fully visible
+        behavior: 'instant',
+      })
     }
   }, [])
 

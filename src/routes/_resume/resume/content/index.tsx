@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useEffect } from 'react'
 
 import { ScrollArea } from '#/components/ui/scroll-area'
+import { useResumeFormContext } from '#/contexts/resume-form-context'
 import AwardsContent from '#/features/private/contents/awards'
 import CertificatesContent from '#/features/private/contents/certificates'
 import CoursesContent from '#/features/private/contents/courses'
@@ -27,12 +28,13 @@ export const Route = createFileRoute('/_resume/resume/content/')({
 })
 
 function RouteComponent() {
+  const { scrollSectionRef } = useResumeFormContext()
   useEffect(() => {
     useContentStore.persist.rehydrate()
   }, [])
 
   return (
-    <ScrollArea className={'h-dvh w-full p-4'}>
+    <ScrollArea className={'h-dvh w-full p-4'} ref={scrollSectionRef}>
       <div className={'pr-2 space-y-4 mb-20'}>
         <InitialCard />
         <SummaryContent />
