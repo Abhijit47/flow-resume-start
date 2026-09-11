@@ -1,7 +1,7 @@
 import { useSelector } from '@tanstack/react-store'
 
 import { ScrollArea } from '#/components/ui/scroll-area'
-import { resumeStore } from '#/store/resume-store'
+import { resumeStoreTs } from '#/store/resume-store-tanstack'
 
 import PersonalDetailsForm from './forms/personal-details-form'
 import InitialCard from './initial-card'
@@ -23,7 +23,7 @@ import WorkContent from './contents/work'
 
 export default function ResumeEditor() {
   const isEnabledFirstForm = useSelector(
-    resumeStore,
+    resumeStoreTs,
     (state) => state.isEnabledFirstForm,
   )
 

@@ -11,7 +11,7 @@ type StoreActions = {
   log: () => void
 }
 
-export const resumeStore = createStore<StoreValues, StoreActions>(
+export const resumeStoreTs = createStore<StoreValues, StoreActions>(
   {
     isEnabledFirstForm: false,
     // initial values
@@ -175,7 +175,7 @@ export const resumeStore = createStore<StoreValues, StoreActions>(
 )
 
 export const updateIsEnabledFirstForm = (isEnabled: boolean) => {
-  resumeStore.setState((state) => {
+  resumeStoreTs.setState((state) => {
     return {
       ...state,
       isEnabledFirstForm: isEnabled,
@@ -186,7 +186,7 @@ export const updateIsEnabledFirstForm = (isEnabled: boolean) => {
 export const updatePersonalDetailsState = (
   personalDetails: ResumeFormValues['personalDetails'],
 ) => {
-  resumeStore.setState((state) => {
+  resumeStoreTs.setState((state) => {
     return {
       ...state,
       resume: {
@@ -198,7 +198,7 @@ export const updatePersonalDetailsState = (
 }
 
 export const updateContents = (content: ResumeFormValues['contents']) => {
-  resumeStore.setState((state) => {
+  resumeStoreTs.setState((state) => {
     return {
       ...state,
       resume: {
@@ -209,9 +209,9 @@ export const updateContents = (content: ResumeFormValues['contents']) => {
   })
 }
 // usage
-// const isEnabledFirstForm = resumeStore.getState().isEnabledFirstForm
-// const personalDetails = resumeStore.getState().resume.personalDetails
-// const contents = resumeStore.getState().resume.contents
+// const isEnabledFirstForm = resumeStoreTs.getState().isEnabledFirstForm
+// const personalDetails = resumeStoreTs.getState().resume.personalDetails
+// const contents = resumeStoreTs.getState().resume.contents
 // updateIsEnabledFirstForm(true)
 // updatePersonalDetailsState({ fullName: 'John Doe' })
 // updateContents({ summary: [{ text: 'New summary' }] })

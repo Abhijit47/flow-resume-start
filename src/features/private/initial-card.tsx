@@ -10,7 +10,7 @@ import {
 import AddContentDialog from '#/features/private/add-content-dialog'
 import { useSession } from '#/lib/auth-client'
 import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
-import { updateIsEnabledFirstForm } from '#/store/resume-store'
+import { updateIsEnabledFirstForm } from '#/store/resume-store-tanstack'
 import {
   IconCamera,
   IconEditCircle,

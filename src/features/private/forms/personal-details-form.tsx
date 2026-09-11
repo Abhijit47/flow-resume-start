@@ -16,7 +16,7 @@ import { Field, FieldGroup, FieldSeparator } from '#/components/ui/field'
 
 import { ScrollArea } from '#/components/ui/scroll-area'
 import type { ResumeFormValues } from '#/lib/validators/resume-schema'
-import { updateIsEnabledFirstForm } from '#/store/resume-store'
+import { updateIsEnabledFirstForm } from '#/store/resume-store-tanstack'
 import PersonalDetailsFields from './personal-details'
 import AddAdditionalField from './personal-details/add-additional-field'
 import AddSocialLinkField from './personal-details/add-social-link-field'

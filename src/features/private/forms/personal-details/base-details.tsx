@@ -11,7 +11,7 @@ import { Field, FieldGroup, FieldLabel } from '#/components/ui/field'
 import { Input } from '#/components/ui/input'
 import { useSession } from '#/lib/auth-client'
 import type { ResumeFormValues } from '#/lib/validators/resume-schema'
-import { resumeStore } from '#/store/resume-store'
+import { resumeStoreTs } from '#/store/resume-store-tanstack'
 
 interface ExtendedFile extends File {
   preview: string
@@ -46,7 +46,7 @@ export default function BaseDetails() {
 
   const form = useFormContext<ResumeFormValues>()
 
-  const { updateFullName } = resumeStore.actions
+  const { updateFullName } = resumeStoreTs.actions
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: { 'image/*': [] },

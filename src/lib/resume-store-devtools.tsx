@@ -1,7 +1,7 @@
 import { EventClient } from '@tanstack/devtools-event-client'
 import { Fragment, useEffect, useState } from 'react'
 
-import { resumeStore } from '#/store/resume-store'
+import { resumeStoreTs } from '#/store/resume-store-tanstack'
 import type { ResumeFormValues } from './validators/resume-schema'
 
 const Key = 'resume-store-devtools' as const
@@ -36,22 +36,22 @@ class StoreDevtoolsEventClient extends EventClient<EventMap> {
 
 const sdec = new StoreDevtoolsEventClient()
 
-resumeStore.subscribe(() => {
+resumeStoreTs.subscribe(() => {
   sdec.emit(EventKey, {
-    isEnabledFirstForm: resumeStore.state.isEnabledFirstForm,
+    isEnabledFirstForm: resumeStoreTs.state.isEnabledFirstForm,
     resume: {
-      personalDetails: resumeStore.state.resume.personalDetails,
-      contents: resumeStore.state.resume.contents,
+      personalDetails: resumeStoreTs.state.resume.personalDetails,
+      contents: resumeStoreTs.state.resume.contents,
     },
   })
 })
 
 function ResumeDevtoolPanel() {
   const [state, setState] = useState<EventMapState>(() => ({
-    isEnabledFirstForm: resumeStore.state.isEnabledFirstForm,
+    isEnabledFirstForm: resumeStoreTs.state.isEnabledFirstForm,
     resume: {
-      personalDetails: resumeStore.state.resume.personalDetails,
-      contents: resumeStore.state.resume.contents,
+      personalDetails: resumeStoreTs.state.resume.personalDetails,
+      contents: resumeStoreTs.state.resume.contents,
     },
   }))
 
