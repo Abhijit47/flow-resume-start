@@ -1,0 +1,8 @@
+export { default as EditCertificates } from './certificates'
+export { default as EditDeclaration } from './declaration'
+export { default as EditEducation } from './education'
+export { default as EditInterests } from './interests'
+export { default as EditLanguages } from './languages'
+export { default as EditSkills } from './skills'
+export { default as EditSummary } from './summary'
+export { default as EditWorkExperience } from './work-experience'

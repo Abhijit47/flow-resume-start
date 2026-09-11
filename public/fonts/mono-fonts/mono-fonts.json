@@ -1,0 +1,48 @@
+{
+  "mono-fonts": {
+    "inconsolata": {
+      "200": "/fonts/mono-fonts/inconsolata/inconsolata-200.ttf",
+      "300": "/fonts/mono-fonts/inconsolata/inconsolata-300.ttf",
+      "500": "/fonts/mono-fonts/inconsolata/inconsolata-500.ttf",
+      "600": "/fonts/mono-fonts/inconsolata/inconsolata-600.ttf",
+      "700": "/fonts/mono-fonts/inconsolata/inconsolata-700.ttf",
+      "800": "/fonts/mono-fonts/inconsolata/inconsolata-800.ttf",
+      "900": "/fonts/mono-fonts/inconsolata/inconsolata-900.ttf",
+      "regular": "/fonts/mono-fonts/inconsolata/inconsolata-regular.ttf"
+    },
+    "source-code-pro": {
+      "200": "/fonts/mono-fonts/source-code-pro/source-code-pro-200.ttf",
+      "300": "/fonts/mono-fonts/source-code-pro/source-code-pro-300.ttf",
+      "500": "/fonts/mono-fonts/source-code-pro/source-code-pro-500.ttf",
+      "600": "/fonts/mono-fonts/source-code-pro/source-code-pro-600.ttf",
+      "700": "/fonts/mono-fonts/source-code-pro/source-code-pro-700.ttf",
+      "800": "/fonts/mono-fonts/source-code-pro/source-code-pro-800.ttf",
+      "900": "/fonts/mono-fonts/source-code-pro/source-code-pro-900.ttf",
+      "regular": "/fonts/mono-fonts/source-code-pro/source-code-pro-regular.ttf"
+    },
+    "overpass-mono": {
+      "300": "/fonts/mono-fonts/overpass-mono/overpass-mono-300.ttf",
+      "500": "/fonts/mono-fonts/overpass-mono/overpass-mono-500.ttf",
+      "600": "/fonts/mono-fonts/overpass-mono/overpass-mono-600.ttf",
+      "700": "/fonts/mono-fonts/overpass-mono/overpass-mono-700.ttf",
+      "regular": "/fonts/mono-fonts/overpass-mono/overpass-mono-regular.ttf"
+    },
+    "space-mono": {
+      "700": "/fonts/mono-fonts/space-mono/space-mono-700.ttf",
+      "regular": "/fonts/mono-fonts/space-mono/space-mono-regular.ttf"
+    },
+    "ibm-plex-mono": {
+      "100": "/fonts/mono-fonts/ibm-plex-mono/ibm-plex-mono-100.ttf",
+      "200": "/fonts/mono-fonts/ibm-plex-mono/ibm-plex-mono-200.ttf",
+      "300": "/fonts/mono-fonts/ibm-plex-mono/ibm-plex-mono-300.ttf",
+      "500": "/fonts/mono-fonts/ibm-plex-mono/ibm-plex-mono-500.ttf",
+      "600": "/fonts/mono-fonts/ibm-plex-mono/ibm-plex-mono-600.ttf",
+      "700": "/fonts/mono-fonts/ibm-plex-mono/ibm-plex-mono-700.ttf",
+      "regular": "/fonts/mono-fonts/ibm-plex-mono/ibm-plex-mono-regular.ttf"
+    },
+    "courier-prime": {
+      "700": "/fonts/mono-fonts/courier-prime/courier-prime-700.ttf",
+      "regular": "/fonts/mono-fonts/courier-prime/courier-prime-regular.ttf"
+    }
+  }
+}

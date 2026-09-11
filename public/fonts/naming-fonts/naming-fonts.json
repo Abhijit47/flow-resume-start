@@ -1,0 +1,46 @@
+{
+  "naming-fonts": {
+    "comfortaa": {
+      "300": "/fonts/naming-fonts/comfortaa/comfortaa-300.ttf",
+      "500": "/fonts/naming-fonts/comfortaa/comfortaa-500.ttf",
+      "600": "/fonts/naming-fonts/comfortaa/comfortaa-600.ttf",
+      "700": "/fonts/naming-fonts/comfortaa/comfortaa-700.ttf",
+      "regular": "/fonts/naming-fonts/comfortaa/comfortaa-regular.ttf"
+    },
+    "abril-fatface": {
+      "regular": "/fonts/naming-fonts/abril-fatface/abril-fatface-regular.ttf"
+    },
+    "amatic-sc": {
+      "700": "/fonts/naming-fonts/amatic-sc/amatic-sc-700.ttf",
+      "regular": "/fonts/naming-fonts/amatic-sc/amatic-sc-regular.ttf"
+    },
+    "bungee-shade": {
+      "regular": "/fonts/naming-fonts/bungee-shade/bungee-shade-regular.ttf"
+    },
+    "caveat": {
+      "500": "/fonts/naming-fonts/caveat/caveat-500.ttf",
+      "600": "/fonts/naming-fonts/caveat/caveat-600.ttf",
+      "700": "/fonts/naming-fonts/caveat/caveat-700.ttf",
+      "regular": "/fonts/naming-fonts/caveat/caveat-regular.ttf"
+    },
+    "caveat-brush": {
+      "regular": "/fonts/naming-fonts/caveat-brush/caveat-brush-regular.ttf"
+    },
+    "elsie": {
+      "900": "/fonts/naming-fonts/elsie/elsie-900.ttf",
+      "regular": "/fonts/naming-fonts/elsie/elsie-regular.ttf"
+    },
+    "lobster": {
+      "regular": "/fonts/naming-fonts/lobster/lobster-regular.ttf"
+    },
+    "pacifico": {
+      "regular": "/fonts/naming-fonts/pacifico/pacifico-regular.ttf"
+    },
+    "parisienne": {
+      "regular": "/fonts/naming-fonts/parisienne/parisienne-regular.ttf"
+    },
+    "vibur": {
+      "regular": "/fonts/naming-fonts/vibur/vibur-regular.ttf"
+    }
+  }
+}

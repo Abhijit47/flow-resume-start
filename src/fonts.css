@@ -1,0 +1,383 @@
+/* mono fonts */
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('/fonts/mono-fonts/inconsolata/inconsolata-regular.ttf')
+    format('truetype');
+  font-weight: 500, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('/fonts/mono-fonts/source-code-pro/source-code-pro-regular.ttf')
+    format('truetype');
+  font-weight: 500, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Overpass Mono';
+  src: url('/fonts/mono-fonts/overpass-mono/overpass-mono-regular.ttf')
+    format('truetype');
+  font-weight: 500, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('/fonts/mono-fonts/space-mono/space-mono-regular.ttf')
+    format('truetype');
+  font-weight: 500, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/mono-fonts/ibm-plex-mono/ibm-plex-mono-regular.ttf')
+    format('truetype');
+  font-weight: 500, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('/fonts/mono-fonts/courier-prime/courier-prime-regular.ttf')
+    format('truetype');
+  font-weight: 500, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* sans fonts */
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/sans-fonts/karla/karla-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mulish';
+  src: url('/fonts/sans-fonts/mulish/mulish-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/fonts/sans-fonts/lato/lato-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  src: url('/fonts/sans-fonts/titillium-web/titillium-web-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/fonts/sans-fonts/work-sans/work-sans-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/sans-fonts/barlow/barlow-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('/fonts/sans-fonts/jost/jost-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('/fonts/sans-fonts/fira-sans/fira-sans-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/sans-fonts/roboto/roboto-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/sans-fonts/rubik/rubik-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Asap';
+  src: url('/fonts/sans-fonts/asap/asap-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/sans-fonts/nunito/nunito-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/fonts/sans-fonts/open-sans/open-sans-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/sans-fonts/ibm-plex-sans/ibm-plex-sans-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('/fonts/sans-fonts/source-sans-pro/source-sans-pro-cyrillic-400-normal.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* serif fonts*/
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/serif-fonts/lora/lora-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('/fonts/serif-fonts/zilla-slab/zilla-slab-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url('/fonts/serif-fonts/pt-serif/pt-serif-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Literata';
+  src: url('/fonts/serif-fonts/literata/literata-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('/fonts/serif-fonts/eb-garamond/eb-garamond-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aleo';
+  src: url('/fonts/serif-fonts/aleo/aleo-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Crimson Pro';
+  src: url('/fonts/serif-fonts/crimson-pro/crimson-pro-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/serif-fonts/cormorant-garamond/cormorant-garamond-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/serif-fonts/vollkorn/vollkorn-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Amiri';
+  src: url('/fonts/serif-fonts/amiri/amiri-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alegreya';
+  src: url('/fonts/serif-fonts/alegreya/alegreya-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/serif-fonts/newsreader/newsreader-latin-400-normal.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* naming fonts */
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('/fonts/naming-fonts/comfortaa/comfortaa-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Abril Fatface';
+  src: url('/fonts/naming-fonts/abril-fatface/abril-fatface-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Amatic SC';
+  src: url('/fonts/naming-fonts/amatic-sc/amatic-sc-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bungee Shade';
+  src: url('/fonts/naming-fonts/bungee-shade/bungee-shade-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/naming-fonts/caveat/caveat-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat Brush';
+  src: url('/fonts/naming-fonts/caveat-brush/caveat-brush-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Elsie';
+  src: url('/fonts/naming-fonts/elsie/elsie-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url('/fonts/naming-fonts/lobster/lobster-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pacifico';
+  src: url('/fonts/naming-fonts/pacifico/pacifico-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Parisienne';
+  src: url('/fonts/naming-fonts/parisienne/parisienne-regular.ttf')
+    format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vibur';
+  src: url('/fonts/naming-fonts/vibur/vibur-regular.ttf') format('truetype');
+  font-weight: 400, 700;
+  font-style: normal;
+  font-display: swap;
+}

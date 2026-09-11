@@ -26,10 +26,12 @@ export const Route = createFileRoute('/_resume')({
   },
   component: RouteComponent,
   notFoundComponent: NotFoundComponent,
-  // pendingComponent: PendingComponent,
+  pendingComponent: PendingComponent,
   // errorComponent: ErrorComponent,
   wrapInSuspense: true,
-  codeSplitGroupings: [['loader', 'component', 'notFoundComponent']],
+  codeSplitGroupings: [
+    ['loader', 'component', 'notFoundComponent', 'pendingComponent'],
+  ],
 })
 
 function RouteComponent() {
@@ -38,7 +40,7 @@ function RouteComponent() {
   return (
     <>
       <EditorSiteHeader />
-      <main className="px-2 lg:px-4 py-2 md:py-4 h-[calc(100dvh-4rem)] overflow-y-hidden">
+      <main className="px-2 lg:px-4 py-2 md:py-4 h-[calc(100dvh-4.1rem)] overflow-y-hidden">
         <div className={'grid grid-cols-12 gap-2'}>
           <ClientOnly fallback={<div>Loading...</div>}>
             <ResumeFormContextProvider user={user}>
@@ -56,15 +58,15 @@ function RouteComponent() {
   )
 }
 
-// function PendingComponent() {
-//   return (
-//     <div className="px-2 lg:px-4 py-2 md:py-4">
-//       <div className={'grid grid-cols-12 gap-2'}>
-//         <div>Loading...</div>
-//       </div>
-//     </div>
-//   )
-// }
+function PendingComponent() {
+  return (
+    <div className="px-2 lg:px-4 py-2 md:py-4">
+      <div className={'grid grid-cols-12 gap-2'}>
+        <div>Loading...</div>
+      </div>
+    </div>
+  )
+}
 
 // function ErrorComponent({ error }: { error: Error }) {
 //   return (

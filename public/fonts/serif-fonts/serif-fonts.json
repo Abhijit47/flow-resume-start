@@ -1,0 +1,107 @@
+{
+  "serif-fonts": {
+    "lora": {
+      "500": "/fonts/serif-fonts/lora/lora-500.ttf",
+      "600": "/fonts/serif-fonts/lora/lora-600.ttf",
+      "700": "/fonts/serif-fonts/lora/lora-700.ttf",
+      "regular": "/fonts/serif-fonts/lora/lora-regular.ttf"
+    },
+    "zilla-slab": {
+      "300": "/fonts/serif-fonts/zilla-slab/zilla-slab-300.ttf",
+      "500": "/fonts/serif-fonts/zilla-slab/zilla-slab-500.ttf",
+      "600": "/fonts/serif-fonts/zilla-slab/zilla-slab-600.ttf",
+      "700": "/fonts/serif-fonts/zilla-slab/zilla-slab-700.ttf",
+      "regular": "/fonts/serif-fonts/zilla-slab/zilla-slab-regular.ttf"
+    },
+    "pt-serif": {
+      "700": "/fonts/serif-fonts/pt-serif/pt-serif-700.ttf",
+      "regular": "/fonts/serif-fonts/pt-serif/pt-serif-regular.ttf"
+    },
+    "literata": {
+      "200": "/fonts/serif-fonts/literata/literata-200.ttf",
+      "300": "/fonts/serif-fonts/literata/literata-300.ttf",
+      "500": "/fonts/serif-fonts/literata/literata-500.ttf",
+      "600": "/fonts/serif-fonts/literata/literata-600.ttf",
+      "700": "/fonts/serif-fonts/literata/literata-700.ttf",
+      "800": "/fonts/serif-fonts/literata/literata-800.ttf",
+      "900": "/fonts/serif-fonts/literata/literata-900.ttf",
+      "regular": "/fonts/serif-fonts/literata/literata-regular.ttf"
+    },
+    "eb-garamond": {
+      "500": "/fonts/serif-fonts/eb-garamond/eb-garamond-500.ttf",
+      "600": "/fonts/serif-fonts/eb-garamond/eb-garamond-600.ttf",
+      "700": "/fonts/serif-fonts/eb-garamond/eb-garamond-700.ttf",
+      "800": "/fonts/serif-fonts/eb-garamond/eb-garamond-800.ttf",
+      "regular": "/fonts/serif-fonts/eb-garamond/eb-garamond-regular.ttf"
+    },
+    "aleo": {
+      "100": "/fonts/serif-fonts/aleo/aleo-100.ttf",
+      "200": "/fonts/serif-fonts/aleo/aleo-200.ttf",
+      "300": "/fonts/serif-fonts/aleo/aleo-300.ttf",
+      "500": "/fonts/serif-fonts/aleo/aleo-500.ttf",
+      "600": "/fonts/serif-fonts/aleo/aleo-600.ttf",
+      "700": "/fonts/serif-fonts/aleo/aleo-700.ttf",
+      "800": "/fonts/serif-fonts/aleo/aleo-800.ttf",
+      "900": "/fonts/serif-fonts/aleo/aleo-900.ttf",
+      "regular": "/fonts/serif-fonts/aleo/aleo-regular.ttf"
+    },
+    "crimson-pro": {
+      "200": "/fonts/serif-fonts/crimson-pro/crimson-pro-200.ttf",
+      "300": "/fonts/serif-fonts/crimson-pro/crimson-pro-300.ttf",
+      "500": "/fonts/serif-fonts/crimson-pro/crimson-pro-500.ttf",
+      "600": "/fonts/serif-fonts/crimson-pro/crimson-pro-600.ttf",
+      "700": "/fonts/serif-fonts/crimson-pro/crimson-pro-700.ttf",
+      "800": "/fonts/serif-fonts/crimson-pro/crimson-pro-800.ttf",
+      "900": "/fonts/serif-fonts/crimson-pro/crimson-pro-900.ttf",
+      "regular": "/fonts/serif-fonts/crimson-pro/crimson-pro-regular.ttf"
+    },
+    "cormorant-garamond": {
+      "300": "/fonts/serif-fonts/cormorant-garamond/cormorant-garamond-300.ttf",
+      "500": "/fonts/serif-fonts/cormorant-garamond/cormorant-garamond-500.ttf",
+      "600": "/fonts/serif-fonts/cormorant-garamond/cormorant-garamond-600.ttf",
+      "700": "/fonts/serif-fonts/cormorant-garamond/cormorant-garamond-700.ttf",
+      "regular": "/fonts/serif-fonts/cormorant-garamond/cormorant-garamond-regular.ttf"
+    },
+    "vollkorn": {
+      "500": "/fonts/serif-fonts/vollkorn/vollkorn-500.ttf",
+      "600": "/fonts/serif-fonts/vollkorn/vollkorn-600.ttf",
+      "700": "/fonts/serif-fonts/vollkorn/vollkorn-700.ttf",
+      "800": "/fonts/serif-fonts/vollkorn/vollkorn-800.ttf",
+      "900": "/fonts/serif-fonts/vollkorn/vollkorn-900.ttf",
+      "regular": "/fonts/serif-fonts/vollkorn/vollkorn-regular.ttf"
+    },
+    "amiri": {
+      "700": "/fonts/serif-fonts/amiri/amiri-700.ttf",
+      "regular": "/fonts/serif-fonts/amiri/amiri-regular.ttf"
+    },
+    "crimson-text": {
+      "600": "/fonts/serif-fonts/crimson-text/crimson-text-600.ttf",
+      "700": "/fonts/serif-fonts/crimson-text/crimson-text-700.ttf",
+      "regular": "/fonts/serif-fonts/crimson-text/crimson-text-regular.ttf"
+    },
+    "alegreya": {
+      "500": "/fonts/serif-fonts/alegreya/alegreya-500.ttf",
+      "600": "/fonts/serif-fonts/alegreya/alegreya-600.ttf",
+      "700": "/fonts/serif-fonts/alegreya/alegreya-700.ttf",
+      "800": "/fonts/serif-fonts/alegreya/alegreya-800.ttf",
+      "900": "/fonts/serif-fonts/alegreya/alegreya-900.ttf",
+      "regular": "/fonts/serif-fonts/alegreya/alegreya-regular.ttf"
+    },
+    "newsreader": {
+      "200": "/fonts/serif-fonts/newsreader/newsreader-latin-200-normal.ttf",
+      "300": "/fonts/serif-fonts/newsreader/newsreader-latin-300-normal.ttf",
+      "400": "/fonts/serif-fonts/newsreader/newsreader-latin-400-normal.ttf",
+      "500": "/fonts/serif-fonts/newsreader/newsreader-latin-500-normal.ttf",
+      "600": "/fonts/serif-fonts/newsreader/newsreader-latin-600-normal.ttf",
+    },
+    "source-serif-pro": {
+      "200": "/fonts/serif-fonts/source-serif-pro/source-serif-pro-cyrillic-200-normal.ttf",
+      "300": "/fonts/serif-fonts/source-serif-pro/source-serif-pro-cyrillic-300-normal.ttf",
+      "400": "/fonts/serif-fonts/source-serif-pro/source-serif-pro-cyrillic-400-normal.ttf",
+      "500": "/fonts/serif-fonts/source-serif-pro/source-serif-pro-cyrillic-500-normal.ttf",
+      "600": "/fonts/serif-fonts/source-serif-pro/source-serif-pro-cyrillic-600-normal.ttf",
+      "700": "/fonts/serif-fonts/source-serif-pro/source-serif-pro-cyrillic-700-normal.ttf",
+      "900": "/fonts/serif-fonts/source-serif-pro/source-serif-pro-cyrillic-900-normal.ttf",
+    }
+  }
+}

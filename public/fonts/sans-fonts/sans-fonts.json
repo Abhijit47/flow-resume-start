@@ -1,0 +1,148 @@
+{
+  "sans-fonts": {
+    "karla": {
+      "200": "/fonts/sans-fonts/karla/karla-200.ttf",
+      "300": "/fonts/sans-fonts/karla/karla-300.ttf",
+      "500": "/fonts/sans-fonts/karla/karla-500.ttf",
+      "600": "/fonts/sans-fonts/karla/karla-600.ttf",
+      "700": "/fonts/sans-fonts/karla/karla-700.ttf",
+      "800": "/fonts/sans-fonts/karla/karla-800.ttf",
+      "regular": "/fonts/sans-fonts/karla/karla-regular.ttf"
+    },
+    "mulish": {
+      "200": "/fonts/sans-fonts/mulish/mulish-200.ttf",
+      "300": "/fonts/sans-fonts/mulish/mulish-300.ttf",
+      "500": "/fonts/sans-fonts/mulish/mulish-500.ttf",
+      "600": "/fonts/sans-fonts/mulish/mulish-600.ttf",
+      "700": "/fonts/sans-fonts/mulish/mulish-700.ttf",
+      "800": "/fonts/sans-fonts/mulish/mulish-800.ttf",
+      "900": "/fonts/sans-fonts/mulish/mulish-900.ttf",
+      "regular": "/fonts/sans-fonts/mulish/mulish-regular.ttf"
+    },
+    "lato": {
+      "100": "/fonts/sans-fonts/lato/lato-100.ttf",
+      "300": "/fonts/sans-fonts/lato/lato-300.ttf",
+      "700": "/fonts/sans-fonts/lato/lato-700.ttf",
+      "900": "/fonts/sans-fonts/lato/lato-900.ttf",
+      "regular": "/fonts/sans-fonts/lato/lato-regular.ttf"
+    },
+    "titillium-web": {
+      "200": "/fonts/sans-fonts/titillium-web/titillium-web-200.ttf",
+      "300": "/fonts/sans-fonts/titillium-web/titillium-web-300.ttf",
+      "600": "/fonts/sans-fonts/titillium-web/titillium-web-600.ttf",
+      "700": "/fonts/sans-fonts/titillium-web/titillium-web-700.ttf",
+      "900": "/fonts/sans-fonts/titillium-web/titillium-web-900.ttf",
+      "regular": "/fonts/sans-fonts/titillium-web/titillium-web-regular.ttf"
+    },
+    "work-sans": {
+      "100": "/fonts/sans-fonts/work-sans/work-sans-100.ttf",
+      "200": "/fonts/sans-fonts/work-sans/work-sans-200.ttf",
+      "300": "/fonts/sans-fonts/work-sans/work-sans-300.ttf",
+      "500": "/fonts/sans-fonts/work-sans/work-sans-500.ttf",
+      "600": "/fonts/sans-fonts/work-sans/work-sans-600.ttf",
+      "700": "/fonts/sans-fonts/work-sans/work-sans-700.ttf",
+      "800": "/fonts/sans-fonts/work-sans/work-sans-800.ttf",
+      "900": "/fonts/sans-fonts/work-sans/work-sans-900.ttf",
+      "regular": "/fonts/sans-fonts/work-sans/work-sans-regular.ttf"
+    },
+    "barlow": {
+      "100": "/fonts/sans-fonts/barlow/barlow-100.ttf",
+      "200": "/fonts/sans-fonts/barlow/barlow-200.ttf",
+      "300": "/fonts/sans-fonts/barlow/barlow-300.ttf",
+      "500": "/fonts/sans-fonts/barlow/barlow-500.ttf",
+      "600": "/fonts/sans-fonts/barlow/barlow-600.ttf",
+      "700": "/fonts/sans-fonts/barlow/barlow-700.ttf",
+      "800": "/fonts/sans-fonts/barlow/barlow-800.ttf",
+      "900": "/fonts/sans-fonts/barlow/barlow-900.ttf",
+      "regular": "/fonts/sans-fonts/barlow/barlow-regular.ttf"
+    },
+    "jost": {
+      "100": "/fonts/sans-fonts/jost/jost-100.ttf",
+      "200": "/fonts/sans-fonts/jost/jost-200.ttf",
+      "300": "/fonts/sans-fonts/jost/jost-300.ttf",
+      "500": "/fonts/sans-fonts/jost/jost-500.ttf",
+      "600": "/fonts/sans-fonts/jost/jost-600.ttf",
+      "700": "/fonts/sans-fonts/jost/jost-700.ttf",
+      "800": "/fonts/sans-fonts/jost/jost-800.ttf",
+      "900": "/fonts/sans-fonts/jost/jost-900.ttf",
+      "regular": "/fonts/sans-fonts/jost/jost-regular.ttf"
+    },
+    "fira-sans": {
+      "100": "/fonts/sans-fonts/fira-sans/fira-sans-100.ttf",
+      "200": "/fonts/sans-fonts/fira-sans/fira-sans-200.ttf",
+      "300": "/fonts/sans-fonts/fira-sans/fira-sans-300.ttf",
+      "500": "/fonts/sans-fonts/fira-sans/fira-sans-500.ttf",
+      "600": "/fonts/sans-fonts/fira-sans/fira-sans-600.ttf",
+      "700": "/fonts/sans-fonts/fira-sans/fira-sans-700.ttf",
+      "800": "/fonts/sans-fonts/fira-sans/fira-sans-800.ttf",
+      "900": "/fonts/sans-fonts/fira-sans/fira-sans-900.ttf",
+      "regular": "/fonts/sans-fonts/fira-sans/fira-sans-regular.ttf"
+    },
+    "roboto": {
+      "100": "/fonts/sans-fonts/roboto/roboto-100.ttf",
+      "200": "/fonts/sans-fonts/roboto/roboto-200.ttf",
+      "300": "/fonts/sans-fonts/roboto/roboto-300.ttf",
+      "500": "/fonts/sans-fonts/roboto/roboto-500.ttf",
+      "600": "/fonts/sans-fonts/roboto/roboto-600.ttf",
+      "700": "/fonts/sans-fonts/roboto/roboto-700.ttf",
+      "800": "/fonts/sans-fonts/roboto/roboto-800.ttf",
+      "900": "/fonts/sans-fonts/roboto/roboto-900.ttf",
+      "regular": "/fonts/sans-fonts/roboto/roboto-regular.ttf"
+    },
+    "rubik": {
+      "300": "/fonts/sans-fonts/rubik/rubik-300.ttf",
+      "500": "/fonts/sans-fonts/rubik/rubik-500.ttf",
+      "600": "/fonts/sans-fonts/rubik/rubik-600.ttf",
+      "700": "/fonts/sans-fonts/rubik/rubik-700.ttf",
+      "800": "/fonts/sans-fonts/rubik/rubik-800.ttf",
+      "900": "/fonts/sans-fonts/rubik/rubik-900.ttf",
+      "regular": "/fonts/sans-fonts/rubik/rubik-regular.ttf"
+    },
+    "asap": {
+      "100": "/fonts/sans-fonts/asap/asap-100.ttf",
+      "200": "/fonts/sans-fonts/asap/asap-200.ttf",
+      "300": "/fonts/sans-fonts/asap/asap-300.ttf",
+      "500": "/fonts/sans-fonts/asap/asap-500.ttf",
+      "600": "/fonts/sans-fonts/asap/asap-600.ttf",
+      "700": "/fonts/sans-fonts/asap/asap-700.ttf",
+      "800": "/fonts/sans-fonts/asap/asap-800.ttf",
+      "900": "/fonts/sans-fonts/asap/asap-900.ttf",
+      "regular": "/fonts/sans-fonts/asap/asap-regular.ttf"
+    },
+    "nunito": {
+      "200": "/fonts/sans-fonts/nunito/nunito-200.ttf",
+      "300": "/fonts/sans-fonts/nunito/nunito-300.ttf",
+      "500": "/fonts/sans-fonts/nunito/nunito-500.ttf",
+      "600": "/fonts/sans-fonts/nunito/nunito-600.ttf",
+      "700": "/fonts/sans-fonts/nunito/nunito-700.ttf",
+      "800": "/fonts/sans-fonts/nunito/nunito-800.ttf",
+      "900": "/fonts/sans-fonts/nunito/nunito-900.ttf",
+      "regular": "/fonts/sans-fonts/nunito/nunito-regular.ttf"
+    },
+    "open-sans": {
+      "300": "/fonts/sans-fonts/open-sans/open-sans-300.ttf",
+      "500": "/fonts/sans-fonts/open-sans/open-sans-500.ttf",
+      "600": "/fonts/sans-fonts/open-sans/open-sans-600.ttf",
+      "700": "/fonts/sans-fonts/open-sans/open-sans-700.ttf",
+      "800": "/fonts/sans-fonts/open-sans/open-sans-800.ttf",
+      "regular": "/fonts/sans-fonts/open-sans/open-sans-regular.ttf"
+    },
+    "ibm-plex-sans": {
+      "100": "/fonts/sans-fonts/ibm-plex-sans/ibm-plex-sans-100.ttf",
+      "200": "/fonts/sans-fonts/ibm-plex-sans/ibm-plex-sans-200.ttf",
+      "300": "/fonts/sans-fonts/ibm-plex-sans/ibm-plex-sans-300.ttf",
+      "500": "/fonts/sans-fonts/ibm-plex-sans/ibm-plex-sans-500.ttf",
+      "600": "/fonts/sans-fonts/ibm-plex-sans/ibm-plex-sans-600.ttf",
+      "700": "/fonts/sans-fonts/ibm-plex-sans/ibm-plex-sans-700.ttf",
+      "regular": "/fonts/sans-fonts/ibm-plex-sans/ibm-plex-sans-regular.ttf"
+    },
+    "source-sans-pro": {
+      "200": "/fonts/sans-fonts/source-sans-pro/source-sans-pro-cyrillic-200-normal.ttf",
+      "300": "/fonts/sans-fonts/source-sans-pro/source-sans-pro-cyrillic-300-normal.ttf",
+      "400": "/fonts/sans-fonts/source-sans-pro/source-sans-pro-cyrillic-400-normal.ttf",
+      "600": "/fonts/sans-fonts/source-sans-pro/source-sans-pro-cyrillic-600-normal.ttf",
+      "700": "/fonts/sans-fonts/source-sans-pro/source-sans-pro-cyrillic-700-normal.ttf",
+      "900": "/fonts/sans-fonts/source-sans-pro/source-sans-pro-cyrillic-900-normal.ttf",
+    }
+  }
+}
