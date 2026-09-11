@@ -34,28 +34,21 @@ import {
 const headerLinks = linkOptions([
   {
     id: crypto.randomUUID(),
-    name: 'Overview',
-    to: '/resumes',
-    icon: <IconGridDots className={'size-4'} />,
-    active: false,
-  },
-  {
-    id: crypto.randomUUID(),
-    name: 'content',
+    name: 'Content',
     to: '/resume/content',
     icon: <IconNotes className={'size-4'} />,
     active: false,
   },
   {
     id: crypto.randomUUID(),
-    name: 'customize',
+    name: 'Customize',
     to: '/resume/customization',
     icon: <IconPalette className={'size-4'} />,
     active: false,
   },
   {
     id: crypto.randomUUID(),
-    name: 'ai-tools',
+    name: 'AI-Tools',
     to: '/resume/ai-tools',
     icon: <IconWand className={'size-4'} />,
     active: false,
@@ -65,22 +58,35 @@ const headerLinks = linkOptions([
 export default function EditorSiteHeader() {
   const { pathname } = useLocation()
 
+  // resume/content || /resume/content/edit/personal-details
+
+  const isContentPage = pathname.startsWith('/resume/content')
+
   return (
     <header className="flex h-16 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height) sticky top-0 left-0 w-full bg-background z-50">
       <nav className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
         <ul className={'flex items-center gap-4'}>
-          {headerLinks.map((item) => (
-            <li key={item.id}>
-              <Button
-                asChild
-                variant={item.to === pathname ? 'outline' : 'ghost'}
-              >
-                <Link to={item.to}>
-                  {item.icon} {item.name}
-                </Link>
-              </Button>
-            </li>
-          ))}
+          <li>
+            <Button asChild variant={'secondary'}>
+              <Link to={'/resumes'}>
+                <IconGridDots className={'size-4'} /> Overview
+              </Link>
+            </Button>
+          </li>
+          {headerLinks.map((item) => {
+            const isActive =
+              item.to === pathname ||
+              (isContentPage && item.to === '/resume/content')
+            return (
+              <li key={item.id}>
+                <Button asChild variant={isActive ? 'outline' : 'ghost'}>
+                  <Link to={item.to}>
+                    {item.icon} {item.name}
+                  </Link>
+                </Button>
+              </li>
+            )
+          })}
         </ul>
 
         <div className="ml-auto flex items-center gap-2">

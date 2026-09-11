@@ -40,7 +40,7 @@ export default function AddAdditionalField() {
           </CollapsibleTrigger>
         </div>
 
-        <CollapsibleContent className="flex flex-col gap-2 mt-2">
+        <CollapsibleContent className="flex flex-col gap-2 mt-2 data-closed:animate-collapsible-up data-open:animate-collapsible-down overflow-hidden transition-all duration-300">
           <Card className={'py-0 rounded-none shadow-none ring-0'}>
             <CardContent className={'px-0 space-x-2 space-y-2'}>
               {filteredPersonalField.map((field) => (

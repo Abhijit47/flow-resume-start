@@ -1,4 +1,5 @@
 import { IconBulb } from '@tabler/icons-react'
+import { useNavigate } from '@tanstack/react-router'
 import { Check } from 'lucide-react'
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form'
 import { useFormContext } from 'react-hook-form'
@@ -15,13 +16,14 @@ import {
 import { Field, FieldGroup, FieldSeparator } from '#/components/ui/field'
 
 import type { ResumeFormValues } from '#/lib/validators/resume-schema'
-import { updateIsEnabledFirstForm } from '#/store/resume-store-tanstack'
 import PersonalDetailsFields from './personal-details'
 import AddAdditionalField from './personal-details/add-additional-field'
 import AddSocialLinkField from './personal-details/add-social-link-field'
 
 export default function PersonalDetailsForm() {
   const form = useFormContext<ResumeFormValues>()
+
+  const navigate = useNavigate()
 
   const onError: SubmitErrorHandler<ResumeFormValues> = (errors) => {
     // console.log('Form Errors:', errors)
@@ -51,7 +53,7 @@ export default function PersonalDetailsForm() {
         '--border-radius': 'calc(var(--radius)  + 4px)',
       } as React.CSSProperties,
     })
-    updateIsEnabledFirstForm(false)
+    navigate({ to: '/resume/content', viewTransition: true })
     // console.log(
     //   'formState:',
     //   JSON.stringify(formState.dirtyFields.personalDetails, null, 2),

@@ -38,7 +38,6 @@ import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-qu
 import { Route as DemoTrpcTodoRouteImport } from './routes/demo/trpc-todo'
 import { Route as ResumeResumeIndexRouteImport } from './routes/_resume/resume/_index'
 import { Route as ResumeResumeAiToolsRouteImport } from './routes/_resume/resume/ai-tools'
-import { Route as ResumeResumeContentRouteImport } from './routes/_resume/resume/content'
 import { Route as ResumeResumeCustomizationRouteImport } from './routes/_resume/resume/customization'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as ApiTrpcSplatRouteImport } from './routes/api.trpc.$'
@@ -46,11 +45,13 @@ import { Route as DemoFormAddressRouteImport } from './routes/demo/form.address'
 import { Route as DemoFormSimpleRouteImport } from './routes/demo/form.simple'
 import { Route as DemoGuitarsIndexRouteImport } from './routes/demo/guitars/index'
 import { Route as DemoGuitarsGuitarIdRouteImport } from './routes/demo/guitars/$guitarId'
+import { Route as ResumeResumeContentIndexRouteImport } from './routes/_resume/resume/content/index'
 import { Route as DemoApiAiChatRouteImport } from './routes/demo/api.ai.chat'
 import { Route as DemoApiAiImageRouteImport } from './routes/demo/api.ai.image'
 import { Route as DemoApiAiStructuredRouteImport } from './routes/demo/api.ai.structured'
 import { Route as DemoApiAiTranscriptionRouteImport } from './routes/demo/api.ai.transcription'
 import { Route as DemoApiAiTtsRouteImport } from './routes/demo/api.ai.tts'
+import { Route as ResumeResumeContentEditPersonalDetailsIndexRouteImport } from './routes/_resume/resume/content/edit/personal-details/index'
 
 const AdminRoute = AdminRouteImport.update({
   id: '/_admin',
@@ -192,11 +193,6 @@ const ResumeResumeAiToolsRoute = ResumeResumeAiToolsRouteImport.update({
   path: '/resume/ai-tools',
   getParentRoute: () => ResumeRoute,
 } as any)
-const ResumeResumeContentRoute = ResumeResumeContentRouteImport.update({
-  id: '/resume/content',
-  path: '/resume/content',
-  getParentRoute: () => ResumeRoute,
-} as any)
 const ResumeResumeCustomizationRoute =
   ResumeResumeCustomizationRouteImport.update({
     id: '/resume/customization',
@@ -233,6 +229,12 @@ const DemoGuitarsGuitarIdRoute = DemoGuitarsGuitarIdRouteImport.update({
   path: '/demo/guitars/$guitarId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResumeResumeContentIndexRoute =
+  ResumeResumeContentIndexRouteImport.update({
+    id: '/resume/content/',
+    path: '/resume/content/',
+    getParentRoute: () => ResumeRoute,
+  } as any)
 const DemoApiAiChatRoute = DemoApiAiChatRouteImport.update({
   id: '/demo/api/ai/chat',
   path: '/demo/api/ai/chat',
@@ -258,6 +260,12 @@ const DemoApiAiTtsRoute = DemoApiAiTtsRouteImport.update({
   path: '/demo/api/ai/tts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResumeResumeContentEditPersonalDetailsIndexRoute =
+  ResumeResumeContentEditPersonalDetailsIndexRouteImport.update({
+    id: '/resume/content/edit/personal-details/',
+    path: '/resume/content/edit/personal-details/',
+    getParentRoute: () => ResumeRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
@@ -284,7 +292,6 @@ export interface FileRoutesByFullPath {
   '/demo/trpc-todo': typeof DemoTrpcTodoRoute
   '/resume': typeof ResumeResumeIndexRoute
   '/resume/ai-tools': typeof ResumeResumeAiToolsRoute
-  '/resume/content': typeof ResumeResumeContentRoute
   '/resume/customization': typeof ResumeResumeCustomizationRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
@@ -297,6 +304,8 @@ export interface FileRoutesByFullPath {
   '/demo/api/ai/structured': typeof DemoApiAiStructuredRoute
   '/demo/api/ai/transcription': typeof DemoApiAiTranscriptionRoute
   '/demo/api/ai/tts': typeof DemoApiAiTtsRoute
+  '/resume/content/': typeof ResumeResumeContentIndexRoute
+  '/resume/content/edit/personal-details/': typeof ResumeResumeContentEditPersonalDetailsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof PublicIndexRoute
@@ -323,7 +332,6 @@ export interface FileRoutesByTo {
   '/demo/trpc-todo': typeof DemoTrpcTodoRoute
   '/resume': typeof ResumeResumeIndexRoute
   '/resume/ai-tools': typeof ResumeResumeAiToolsRoute
-  '/resume/content': typeof ResumeResumeContentRoute
   '/resume/customization': typeof ResumeResumeCustomizationRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
@@ -336,6 +344,8 @@ export interface FileRoutesByTo {
   '/demo/api/ai/structured': typeof DemoApiAiStructuredRoute
   '/demo/api/ai/transcription': typeof DemoApiAiTranscriptionRoute
   '/demo/api/ai/tts': typeof DemoApiAiTtsRoute
+  '/resume/content': typeof ResumeResumeContentIndexRoute
+  '/resume/content/edit/personal-details': typeof ResumeResumeContentEditPersonalDetailsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -368,7 +378,6 @@ export interface FileRoutesById {
   '/_public/': typeof PublicIndexRoute
   '/_resume/resume/_index': typeof ResumeResumeIndexRoute
   '/_resume/resume/ai-tools': typeof ResumeResumeAiToolsRoute
-  '/_resume/resume/content': typeof ResumeResumeContentRoute
   '/_resume/resume/customization': typeof ResumeResumeCustomizationRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
@@ -381,6 +390,8 @@ export interface FileRoutesById {
   '/demo/api/ai/structured': typeof DemoApiAiStructuredRoute
   '/demo/api/ai/transcription': typeof DemoApiAiTranscriptionRoute
   '/demo/api/ai/tts': typeof DemoApiAiTtsRoute
+  '/_resume/resume/content/': typeof ResumeResumeContentIndexRoute
+  '/_resume/resume/content/edit/personal-details/': typeof ResumeResumeContentEditPersonalDetailsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -409,7 +420,6 @@ export interface FileRouteTypes {
     | '/demo/trpc-todo'
     | '/resume'
     | '/resume/ai-tools'
-    | '/resume/content'
     | '/resume/customization'
     | '/api/auth/$'
     | '/api/trpc/$'
@@ -422,6 +432,8 @@ export interface FileRouteTypes {
     | '/demo/api/ai/structured'
     | '/demo/api/ai/transcription'
     | '/demo/api/ai/tts'
+    | '/resume/content/'
+    | '/resume/content/edit/personal-details/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -448,7 +460,6 @@ export interface FileRouteTypes {
     | '/demo/trpc-todo'
     | '/resume'
     | '/resume/ai-tools'
-    | '/resume/content'
     | '/resume/customization'
     | '/api/auth/$'
     | '/api/trpc/$'
@@ -461,6 +472,8 @@ export interface FileRouteTypes {
     | '/demo/api/ai/structured'
     | '/demo/api/ai/transcription'
     | '/demo/api/ai/tts'
+    | '/resume/content'
+    | '/resume/content/edit/personal-details'
   id:
     | '__root__'
     | '/_admin'
@@ -492,7 +505,6 @@ export interface FileRouteTypes {
     | '/_public/'
     | '/_resume/resume/_index'
     | '/_resume/resume/ai-tools'
-    | '/_resume/resume/content'
     | '/_resume/resume/customization'
     | '/api/auth/$'
     | '/api/trpc/$'
@@ -505,6 +517,8 @@ export interface FileRouteTypes {
     | '/demo/api/ai/structured'
     | '/demo/api/ai/transcription'
     | '/demo/api/ai/tts'
+    | '/_resume/resume/content/'
+    | '/_resume/resume/content/edit/personal-details/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -739,13 +753,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResumeResumeAiToolsRouteImport
       parentRoute: typeof ResumeRoute
     }
-    '/_resume/resume/content': {
-      id: '/_resume/resume/content'
-      path: '/resume/content'
-      fullPath: '/resume/content'
-      preLoaderRoute: typeof ResumeResumeContentRouteImport
-      parentRoute: typeof ResumeRoute
-    }
     '/_resume/resume/customization': {
       id: '/_resume/resume/customization'
       path: '/resume/customization'
@@ -795,6 +802,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoGuitarsGuitarIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_resume/resume/content/': {
+      id: '/_resume/resume/content/'
+      path: '/resume/content'
+      fullPath: '/resume/content/'
+      preLoaderRoute: typeof ResumeResumeContentIndexRouteImport
+      parentRoute: typeof ResumeRoute
+    }
     '/demo/api/ai/chat': {
       id: '/demo/api/ai/chat'
       path: '/demo/api/ai/chat'
@@ -829,6 +843,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/demo/api/ai/tts'
       preLoaderRoute: typeof DemoApiAiTtsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_resume/resume/content/edit/personal-details/': {
+      id: '/_resume/resume/content/edit/personal-details/'
+      path: '/resume/content/edit/personal-details'
+      fullPath: '/resume/content/edit/personal-details/'
+      preLoaderRoute: typeof ResumeResumeContentEditPersonalDetailsIndexRouteImport
+      parentRoute: typeof ResumeRoute
     }
   }
 }
@@ -898,15 +919,18 @@ const PublicRouteWithChildren =
 interface ResumeRouteChildren {
   ResumeResumeIndexRoute: typeof ResumeResumeIndexRoute
   ResumeResumeAiToolsRoute: typeof ResumeResumeAiToolsRoute
-  ResumeResumeContentRoute: typeof ResumeResumeContentRoute
   ResumeResumeCustomizationRoute: typeof ResumeResumeCustomizationRoute
+  ResumeResumeContentIndexRoute: typeof ResumeResumeContentIndexRoute
+  ResumeResumeContentEditPersonalDetailsIndexRoute: typeof ResumeResumeContentEditPersonalDetailsIndexRoute
 }
 
 const ResumeRouteChildren: ResumeRouteChildren = {
   ResumeResumeIndexRoute: ResumeResumeIndexRoute,
   ResumeResumeAiToolsRoute: ResumeResumeAiToolsRoute,
-  ResumeResumeContentRoute: ResumeResumeContentRoute,
   ResumeResumeCustomizationRoute: ResumeResumeCustomizationRoute,
+  ResumeResumeContentIndexRoute: ResumeResumeContentIndexRoute,
+  ResumeResumeContentEditPersonalDetailsIndexRoute:
+    ResumeResumeContentEditPersonalDetailsIndexRoute,
 }
 
 const ResumeRouteWithChildren =

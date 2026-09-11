@@ -10,7 +10,6 @@ import {
 import AddContentDialog from '#/features/private/add-content-dialog'
 import { useSession } from '#/lib/auth-client'
 import type { PersonalDetailsFormData } from '#/lib/validators/personal-info-schema'
-import { updateIsEnabledFirstForm } from '#/store/resume-store-tanstack'
 import {
   IconCamera,
   IconEditCircle,
@@ -18,6 +17,7 @@ import {
   IconMap2,
   IconPhoneCall,
 } from '@tabler/icons-react'
+import { useNavigate } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { useIndexedDB } from 'react-indexed-db-hook'
@@ -51,6 +51,8 @@ export default function InitialCard() {
   const { getByID } = useIndexedDB('userAvatar')
 
   const form = useFormContext<BaseDetailsFormFields>()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (data) {
@@ -92,7 +94,12 @@ export default function InitialCard() {
           <Button
             size={'icon-sm'}
             className={'rounded-full'}
-            onClick={() => updateIsEnabledFirstForm(true)}
+            onClick={() => {
+              navigate({
+                to: '/resume/content/edit/personal-details',
+                viewTransition: true,
+              })
+            }}
           >
             <IconEditCircle className={'size-4'} />
           </Button>

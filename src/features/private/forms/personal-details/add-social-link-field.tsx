@@ -48,7 +48,7 @@ export default function AddSocialLinkField() {
           </CollapsibleTrigger>
         </div>
 
-        <CollapsibleContent className="flex flex-col gap-2">
+        <CollapsibleContent className="flex flex-col gap-2 data-closed:animate-collapsible-up data-open:animate-collapsible-down overflow-hidden transition-all duration-300">
           <FieldGroup className={'gap-2'}>
             <Field>
               <FieldLabel htmlFor="social-profile">Search Providers</FieldLabel>
