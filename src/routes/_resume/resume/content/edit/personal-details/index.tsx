@@ -1,6 +1,9 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { useEffect } from 'react'
+
 import { ScrollArea } from '#/components/ui/scroll-area'
 import PersonalDetailsForm from '#/features/private/forms/personal-details-form'
-import { createFileRoute } from '@tanstack/react-router'
+import { usePersonalizationStore } from '#/store/personal-data-store'
 
 export const Route = createFileRoute(
   '/_resume/resume/content/edit/personal-details/',
@@ -12,6 +15,10 @@ export const Route = createFileRoute(
 })
 
 function RouteComponent() {
+  useEffect(() => {
+    usePersonalizationStore.persist.rehydrate()
+  }, [])
+
   return (
     <ScrollArea className={'h-dvh w-full p-4'}>
       <PersonalDetailsForm />

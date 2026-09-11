@@ -1,3 +1,6 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { useEffect } from 'react'
+
 import { ScrollArea } from '#/components/ui/scroll-area'
 import AwardsContent from '#/features/private/contents/awards'
 import CertificatesContent from '#/features/private/contents/certificates'
@@ -14,7 +17,7 @@ import SkillsContent from '#/features/private/contents/skills'
 import SummaryContent from '#/features/private/contents/summary'
 import WorkContent from '#/features/private/contents/work'
 import InitialCard from '#/features/private/initial-card'
-import { createFileRoute } from '@tanstack/react-router'
+import { useContentStore } from '#/store/content-store'
 
 export const Route = createFileRoute('/_resume/resume/content/')({
   loader: async ({ context }) => {
@@ -24,6 +27,10 @@ export const Route = createFileRoute('/_resume/resume/content/')({
 })
 
 function RouteComponent() {
+  useEffect(() => {
+    useContentStore.persist.rehydrate()
+  }, [])
+
   return (
     <ScrollArea className={'h-dvh w-full p-4'}>
       <div className={'pr-2 space-y-4 mb-20'}>

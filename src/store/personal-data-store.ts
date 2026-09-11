@@ -1,4 +1,5 @@
 import type { Social } from '#/types/social-types'
+import type { ExtractState } from 'zustand'
 import { create } from 'zustand'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
@@ -228,3 +229,16 @@ one by one new dynamic fields will be added to the personalization store, and th
 	]
 }
 */
+
+declare global {
+  interface Window {
+    store: ReturnType<typeof usePersonalizationStore>
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.store = usePersonalizationStore
+}
+
+// Extract the type of the whole store state
+export type ContentState = ExtractState<typeof usePersonalizationStore>
