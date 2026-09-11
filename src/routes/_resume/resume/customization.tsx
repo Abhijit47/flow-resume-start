@@ -77,12 +77,12 @@ function RouteComponent() {
   }, [])
 
   return (
-    <div className="flex gap-5 w-full grow">
-      <div className="flex flex-col gap-2 w-37.5">
+    <div className={'flex w-full'}>
+      <div className={'hidden flex-2/12 space-y-2 py-4 lg:block'}>
         <Scrollspy
           offset={50}
           targetRef={parentRef}
-          className="flex flex-col gap-2.5 mt-8"
+          className="flex flex-col gap-2.5 mt-2"
         >
           {scrollSpyNavbar.map((item) => (
             <Button
@@ -98,7 +98,7 @@ function RouteComponent() {
           ))}
         </Scrollspy>
       </div>
-      <div className="grow" ref={parentRef}>
+      <div className={'flex-10/12 space-y-6 p-2'} ref={parentRef}>
         <ScrollArea className="space-y-6 pe-4 w-full h-dvh">
           <div className="space-y-8 w-full">
             {scrollSpyNavbar.map((item) => (

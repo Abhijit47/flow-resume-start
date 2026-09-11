@@ -1,5 +1,4 @@
 import { useMutation } from '@tanstack/react-query'
-import { Link } from '@tanstack/react-router'
 import { useServerFn } from '@tanstack/react-start'
 import { useFormContext, useWatch } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -35,17 +34,12 @@ export default function PreviewCanvas() {
   }
 
   return (
-    <Card>
-      <CardContent>
+    <Card className={'space-y-6 pb-36'}>
+      <CardContent className={'mx-auto'}>
         <ResumeTemplate data={watchedValues} />
 
         <Button className="mt-4" onClick={handleDownload}>
           Download
-        </Button>
-        <Button className="mt-4" asChild>
-          <Link to="/print" viewTransition>
-            Goto
-          </Link>
         </Button>
       </CardContent>
     </Card>

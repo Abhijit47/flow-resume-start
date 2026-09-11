@@ -28,28 +28,32 @@ export default function ResumeEditor() {
   )
 
   return (
-    <ScrollArea className={'h-dvh overflow-y-hidden w-full'}>
+    <>
       {!isEnabledFirstForm ? (
-        <div className={'pr-4 space-y-4'}>
-          <InitialCard />
-          <SummaryContent />
-          <EducationContent />
-          <WorkContent />
-          <SkillsContent />
-          <LanguagesContent />
-          <CertificatesContent />
-          <InterestsContent />
-          <ProjectsContent />
-          <CoursesContent />
-          <AwardsContent />
-          <OrganizationsContent />
-          <PublicationsContent />
-          <ReferencesContent />
-          <DeclarationContent />
-        </div>
+        <ScrollArea className={'h-dvh w-full p-4'}>
+          <div className={'pr-2 space-y-4 mb-20'}>
+            <InitialCard />
+            <SummaryContent />
+            <EducationContent />
+            <WorkContent />
+            <SkillsContent />
+            <LanguagesContent />
+            <CertificatesContent />
+            <InterestsContent />
+            <ProjectsContent />
+            <CoursesContent />
+            <AwardsContent />
+            <OrganizationsContent />
+            <PublicationsContent />
+            <ReferencesContent />
+            <DeclarationContent />
+          </div>
+        </ScrollArea>
       ) : (
-        <PersonalDetailsForm />
+        <ScrollArea className={'h-dvh w-full p-4'}>
+          <PersonalDetailsForm />
+        </ScrollArea>
       )}
-    </ScrollArea>
+    </>
   )
 }

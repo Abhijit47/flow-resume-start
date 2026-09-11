@@ -14,7 +14,6 @@ import {
 } from '#/components/ui/card'
 import { Field, FieldGroup, FieldSeparator } from '#/components/ui/field'
 
-import { ScrollArea } from '#/components/ui/scroll-area'
 import type { ResumeFormValues } from '#/lib/validators/resume-schema'
 import { updateIsEnabledFirstForm } from '#/store/resume-store-tanstack'
 import PersonalDetailsFields from './personal-details'
@@ -60,42 +59,40 @@ export default function PersonalDetailsForm() {
   }
 
   return (
-    <ScrollArea className={'h-dvh w-full'}>
-      <Card className={'w-full'}>
-        <CardHeader>
-          <CardTitle>Edit Personal Details</CardTitle>
-          <CardAction>
-            <Button variant={'ghost'} size={'sm'}>
-              <IconBulb className={'size-4'} />
-              Get Tips
+    <Card className={'w-full mb-16'}>
+      <CardHeader>
+        <CardTitle>Edit Personal Details</CardTitle>
+        <CardAction>
+          <Button variant={'ghost'} size={'sm'}>
+            <IconBulb className={'size-4'} />
+            Get Tips
+          </Button>
+        </CardAction>
+      </CardHeader>
+
+      <CardContent>
+        <div className="w-full">
+          <form onSubmit={form.handleSubmit(onSubmit, onError)}>
+            <FieldGroup className={'gap-2'}>
+              <PersonalDetailsFields />
+
+              <FieldSeparator />
+
+              <AddAdditionalField />
+
+              <FieldSeparator />
+
+              <AddSocialLinkField />
+
+              <Field orientation="horizontal"></Field>
+            </FieldGroup>
+            <Button type="submit" size={'lg'} className={'w-full'}>
+              <Check className={'size-4'} />
+              Done
             </Button>
-          </CardAction>
-        </CardHeader>
-
-        <CardContent>
-          <div className="w-full">
-            <form onSubmit={form.handleSubmit(onSubmit, onError)}>
-              <FieldGroup className={'gap-2'}>
-                <PersonalDetailsFields />
-
-                <FieldSeparator />
-
-                <AddAdditionalField />
-
-                <FieldSeparator />
-
-                <AddSocialLinkField />
-
-                <Field orientation="horizontal"></Field>
-              </FieldGroup>
-              <Button type="submit" size={'lg'} className={'w-full'}>
-                <Check className={'size-4'} />
-                Done
-              </Button>
-            </form>
-          </div>
-        </CardContent>
-      </Card>
-    </ScrollArea>
+          </form>
+        </div>
+      </CardContent>
+    </Card>
   )
 }

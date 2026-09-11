@@ -40,15 +40,20 @@ function RouteComponent() {
   return (
     <>
       <EditorSiteHeader />
-      <main className="px-2 lg:px-4 py-2 md:py-4 h-[calc(100dvh-4.1rem)] overflow-y-hidden">
-        <div className={'grid grid-cols-12 gap-2'}>
+      <main className="mx-auto max-h-[calc(100vh-5rem)] w-full max-w-390 overflow-y-hidden">
+        <div className={'flex w-full gap-0 px-4'}>
           <ClientOnly fallback={<div>Loading...</div>}>
             <ResumeFormContextProvider user={user}>
-              <section className={'col-span-full lg:col-span-5'}>
+              <section className={'flex-5/12'}>
                 <Outlet />
               </section>
-              <section className={'col-span-full lg:col-span-7'}>
+              <section
+                className={
+                  'hidden max-h-screen space-y-4 overflow-scroll md:block lg:flex-8/12 xl:flex-auto group relative py-4'
+                }
+              >
                 <PreviewCanvas />
+                {/* <PreviewDialog /> */}
               </section>
             </ResumeFormContextProvider>
           </ClientOnly>

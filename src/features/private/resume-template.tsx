@@ -31,6 +31,11 @@ export function ResumeTemplate({ data }: ResumeTemplateProps) {
         backgroundColor: 'aliceblue',
         color: 'rebeccapurple',
         fontFamily: 'sans-serif',
+        width: '210mm',
+        height: '297mm',
+        // display: 'flex',
+        // alignItems: 'center',
+        // justifyContent: 'center',
       }}
     >
       <pre className="text-xs">
