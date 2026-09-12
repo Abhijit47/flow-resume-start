@@ -29,7 +29,7 @@ export default function ReferenceForm() {
       <FieldSet>
         <div className={'flex items-center justify-between'}>
           <FieldLegend>Edit Entry</FieldLegend>
-          <FormItemSettings />
+          <FormItemSettings tipItemName="references" />
         </div>
         <FieldSet>
           <Field>

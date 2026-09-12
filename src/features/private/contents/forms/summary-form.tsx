@@ -28,6 +28,7 @@ import {
 import { MarkToolbarButton } from '@/components/editor/mark-toolbar-button'
 import { ToolbarButton } from '@/components/editor/toolbar'
 import { useFormContext } from 'react-hook-form'
+import FormItemSettings from './form-item-settings'
 
 const initialValue: Value = [
   {
@@ -90,9 +91,12 @@ export default function SummaryForm({ fieldIdx }: { fieldIdx: number }) {
   return (
     <div>
       <Field>
-        <FieldLabel htmlFor={`contents.summary.${fieldIdx}.text`}>
-          Professional Summary
-        </FieldLabel>
+        <div className={'flex items-center justify-between'}>
+          <FieldLabel htmlFor={`contents.summary.${fieldIdx}.text`}>
+            Professional Summary
+          </FieldLabel>
+          <FormItemSettings tipItemName="summary" />
+        </div>
         <Plate
           editor={editor}
           onChange={({ value }) => {

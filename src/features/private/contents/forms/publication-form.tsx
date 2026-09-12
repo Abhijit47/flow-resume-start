@@ -73,7 +73,7 @@ export default function PublicationForm() {
       <FieldSet>
         <div className={'flex items-center justify-between'}>
           <FieldLegend>Edit Entry</FieldLegend>
-          <FormItemSettings />
+          <FormItemSettings tipItemName="publications" />
         </div>
         <FieldSet>
           <Field>

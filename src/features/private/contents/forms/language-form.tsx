@@ -52,7 +52,7 @@ export default function LanguageForm() {
       <FieldSet>
         <div className={'flex items-center justify-between'}>
           <FieldLegend>Edit Entry</FieldLegend>
-          <FormItemSettings />
+          <FormItemSettings tipItemName="languages" />
         </div>
         <FieldSet>
           <Field>

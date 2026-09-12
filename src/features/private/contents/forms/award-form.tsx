@@ -73,7 +73,7 @@ export default function AwardForm() {
       <FieldSet>
         <div className={'flex items-center justify-between'}>
           <FieldLegend>Edit Entry</FieldLegend>
-          <FormItemSettings />
+          <FormItemSettings tipItemName="awards" />
         </div>
         <FieldSet>
           <Field>

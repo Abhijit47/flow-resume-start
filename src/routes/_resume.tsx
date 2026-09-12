@@ -1,6 +1,7 @@
 import { ResumeFormContextProvider } from '#/contexts/resume-form-context'
 import EditorSiteHeader from '#/features/private/editor-site-header'
 import PreviewCanvas from '#/features/private/preview-canvas'
+import ResumeTips from '#/features/private/tips'
 import { getSession } from '#/lib/auth.functions'
 import {
   ClientOnly,
@@ -53,6 +54,7 @@ function RouteComponent() {
                 }
               >
                 <PreviewCanvas />
+                <ResumeTips />
                 {/* <PreviewDialog /> */}
               </section>
             </ResumeFormContextProvider>

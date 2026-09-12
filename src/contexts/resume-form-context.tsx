@@ -74,6 +74,9 @@ type ResumeFormContextType = {
   filteredContentItems: typeof contentItems
 
   scrollSectionRef: React.RefObject<HTMLDivElement | null>
+
+  isTipsDialogOpen: boolean
+  toggleTipsDialog: () => void
 }
 
 const ResumeFormContext = createContext<ResumeFormContextType | undefined>(
@@ -93,6 +96,8 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
   const [selectedField, setSelectedField] = useState<Base[]>([])
 
   const scrollSectionRef = useRef<HTMLDivElement>(null)
+
+  const [isTipsDialogOpen, setIsTipsDialogOpen] = useState(false)
 
   // const filteredSocialProfileField = searchSocialProfile
   //   ? socialProfileField.filter((field) =>
@@ -238,6 +243,27 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
     name: 'contents.declaration', // name of the field array
   })
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // initDB(DBConfig)
+    }
+  }, [])
+
+  // when the component mounts, scroll to the bottom of the sectionRef
+  useEffect(() => {
+    if (scrollSectionRef.current) {
+      // scrollSectionRef.current.scrollTop = scrollSectionRef.current.scrollHeight
+      scrollSectionRef.current.scrollTo({
+        top: scrollSectionRef.current.scrollHeight - 100, // Add some extra space to ensure the last item is fully visible
+        behavior: 'instant',
+      })
+    }
+  }, [])
+
+  function toggleTipsDialog() {
+    setIsTipsDialogOpen((prev) => !prev)
+  }
+
   const values: ResumeFormContextType = {
     selectedField,
     filteredPersonalField,
@@ -268,24 +294,10 @@ export function ResumeFormContextProvider(props: ResumeFormProviderProps) {
     declarationOpts,
 
     scrollSectionRef,
+
+    isTipsDialogOpen,
+    toggleTipsDialog,
   }
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // initDB(DBConfig)
-    }
-  }, [])
-
-  // when the component mounts, scroll to the bottom of the sectionRef
-  useEffect(() => {
-    if (scrollSectionRef.current) {
-      // scrollSectionRef.current.scrollTop = scrollSectionRef.current.scrollHeight
-      scrollSectionRef.current.scrollTo({
-        top: scrollSectionRef.current.scrollHeight - 100, // Add some extra space to ensure the last item is fully visible
-        behavior: 'instant',
-      })
-    }
-  }, [])
 
   return (
     <ResumeFormContext.Provider value={values}>
